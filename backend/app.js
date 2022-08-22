@@ -17,7 +17,7 @@ app.listen((port = 4000), () => {
 
 // routes
 
-app.get("/", (req, res) => {
+app.get("/api/assets", (req, res) => {
   const options = {
     method: "GET",
     url: "https://api.coincap.io/v2/assets",
@@ -29,6 +29,6 @@ app.get("/", (req, res) => {
       res.status(200).json(response.data);
     })
     .catch(function (error) {
-      console.error(error);
+      res.status(400).json(error);
     });
 });
