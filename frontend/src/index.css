@@ -20,6 +20,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #1d1d20;
   color: #ffffffde;
+  /* background-image: url('https://www.transparenttextures.com/patterns/always-grey.png'); */
 }
 
 code {
@@ -29,6 +30,7 @@ code {
 
 #navbar {
   background-color: #27272b;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .3);
 
 }
 
@@ -38,6 +40,7 @@ code {
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
+  border-bottom: 3px solid lime;
 }
 
 .nav {
@@ -45,7 +48,18 @@ code {
 }
 
 .nav a {
-  padding: 0.5em;
+  padding: 0.3em 1em;
+  margin: 0 5px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: gray;
+  /* background-color: #1a1a1a; */
+
+}
+
+.nav a:hover {
+  background-color: #333;
+  color: white;
 }
 
 .container {
@@ -110,4 +124,16 @@ code {
   border-radius: 50px;
   padding: 0.5em;
   text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+#logo a i {
+  color: lime;
+}
+
+#logo a {
+  color: lightgray;
 }

@@ -7,16 +7,24 @@ const Navbar = () => {
         <div className="navcont">
           <div id="logo">
             <a href="/">
-              <h2>cryptoSpace</h2>
+              <h3>
+                <i className="fa-regular fa-gem"></i> cryptoview
+              </h3>
             </a>
           </div>
 
-            <input className="searchbar" />
-
+          {/* <input className="searchbar" placeholder="search a coin..." /> */}
+          
           <div className="nav">
-
-            <Link to="/news">News</Link>
-            <Link to="/about">About</Link>
+            <Link to="/converter">
+              <i class="fa-solid fa-calculator"></i> Converter
+            </Link>
+            <Link to="/news">
+              <i class="fa-solid fa-newspaper"></i> News
+            </Link>
+            <Link to="/about">
+              <i class="fa-solid fa-circle-info"></i> About
+            </Link>
           </div>
         </div>
       </div>
