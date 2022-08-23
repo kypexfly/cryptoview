@@ -1,6 +1,8 @@
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CoinList from "./pages/Home";
+import About from "./pages/About";
+import Converter from "./pages/Converter";
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" element={<CoinList />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/converter" element={<Converter />} />
             </Routes>
           </div>
         </div>
