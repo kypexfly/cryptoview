@@ -35,7 +35,14 @@ const Chart = () => {
                             type: 'scatter',
                             fill: 'tonexty',
                             mode: 'lines',
+                            hoverlabel: {
+                                // bgcolor: "rgba(0,0,0,.8)",
+                                bordercolor: "rgba(0,0,0,0)",
+                                font: {color: "#FFF", size: 15}
+                            },
                             marker: { color: 'slateblue' },
+                            hovertemplate: '<b>$%{y:.2f}</b> <br>' +
+                                '<span>%{x}<extra></extra>',
                         }
                     ]}
                     layout={{
@@ -45,7 +52,7 @@ const Chart = () => {
                         paper_bgcolor: "rgba(0,0,0,0)",
                         plot_bgcolor: "rgba(0,0,0,0)",
                         font: { color: "darkgray" },
-                        hovermode: "x",
+                        // hovermode: "x",
                         xaxis: {
                             showgrid: false,
                             gridcolor: "slateblue",
@@ -60,7 +67,7 @@ const Chart = () => {
                             zeroline: false,
                             showline: false,
                             autotick: true,
-                            range: [Math.min(...priceUsd)*0.99, Math.max(...priceUsd)],
+                            range: [Math.min(...priceUsd) * 0.99, Math.max(...priceUsd)],
                         },
                     }}
                     useResizeHandler={true}
