@@ -18,16 +18,14 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <div className="pages">
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/assets" element={<Coins />} />
-              <Route path="/assets/:coinid" element={<Asset />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/converter" element={<Converter />} />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<Home title="CryptoView" />} />
+            <Route path="/assets" element={<Coins title="Assets - CryptoView" />} />
+            <Route path="/assets/:coinid" element={<Asset />} />
+            <Route path="/news" element={<News title="News - CryptoView" />} />
+            <Route path="/about" element={<About title="About - CryptoView" />} />
+            <Route path="/converter" element={<Converter title="Converter - CryptoView" />} />
+          </Routes>
         </div>
 
         <Footer />

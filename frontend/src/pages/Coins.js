@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-const CoinList = () => {
+const CoinList = ({ title }) => {
+
   const [assets, setAssets] = useState([]);
 
   const fetchTopCoins = async () => {
@@ -13,14 +14,15 @@ const CoinList = () => {
   };
 
   useEffect(() => {
+    document.title = title || "CryptoView"
     fetchTopCoins();
   }, []);
 
   let format_compact = Intl.NumberFormat("en", { notation: "compact" });
-  let format_asset = Intl.NumberFormat("en", { maximumSignificantDigits: 5 });
+  let format_asset = Intl.NumberFormat("en", { maximumSignificantDigits: 7 });
 
   return (
-    <div>
+    <div className="container">
       <h1>Crypto Market Capitalization</h1>
       <hr />
 

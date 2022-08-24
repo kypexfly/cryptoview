@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Converter = () => {
+const Converter = ({ title }) => {
 
   const [amount, setAmount] = useState(1)
   const [leftCoin, setLeftCoin] = useState("bitcoin")
@@ -26,6 +26,9 @@ const Converter = () => {
   }
 
   useEffect(() => {
+    
+    document.title = title || "CryptoView"
+
     fetchAssetRates(leftCoin, rightCoin)
   }, [leftCoin, rightCoin])
 
@@ -34,7 +37,7 @@ const Converter = () => {
   });
 
   return (
-    <div>
+    <div className="container">
 
       <h1>Cryptocurrency Converter Calculator</h1>
       <hr />
@@ -57,6 +60,7 @@ const Converter = () => {
             <option value="bitcoin">Bitcoin (BTC)</option>
             <option value="ethereum">Ethereum (ETH)</option>
             <option value="united-states-dollar">United States Dollar (USD)</option>
+            <option value="euro">Euro (EUR)</option>
           </select>
 
           <select name="rightSide" defaultValue={"united-states-dollar"}
@@ -65,6 +69,7 @@ const Converter = () => {
             <option value="bitcoin">Bitcoin (BTC)</option>
             <option value="ethereum">Ethereum (ETH)</option>
             <option value="united-states-dollar">United States Dollar (USD)</option>
+            <option value="euro">Euro (EUR)</option>
           </select>
 
           <div className="conversion-result">

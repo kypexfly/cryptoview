@@ -25,7 +25,7 @@ body, input, select, option {
 body {
   background-color: #1d1d20;
   color: #ffffffde;
-  background-image: url('https://www.transparenttextures.com/patterns/always-grey.png');
+  /* background-image: url('https://www.transparenttextures.com/patterns/always-grey.png'); */
   /* background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgAgMAAADm7QMnAAAADFBMVEV3d3dOTk5OTk5OTk60BIz+AAAABHRSTlP/bytS3QghxwAAAEhJREFUeAFjZA1gQAevGVc5XPjy9z8K8Ytowd/YBf8zYIB/xGsfyhaNWjRq0ahFoxaNWkS4QhmtjwaDRaMWjVo0atGoRaP1EQDs2xO3GiLLhAAAAABJRU5ErkJggg=='); */
 }
 
@@ -144,6 +144,10 @@ code {
   color: #18c683;
 }
 
+.green::before {
+  content: "+";
+}
+
 .red {
   color: #fb4437;
 }
@@ -202,7 +206,8 @@ code {
 .feed-list {
   line-height: 1.2em;
   padding: 0.5em;
-  min-height: 70vh;
+  min-height: 60vh;
+  /* overflow: scroll; */
 }
 
 #converter {
@@ -219,10 +224,6 @@ hr {
 
 h1 {
   color: lightgray;
-}
-
-button {
-  cursor: pointer;
 }
 
 select {
@@ -255,7 +256,6 @@ hr {
 
 .feed-row {
   display: flex;
-
   border-bottom: 1px solid #3e3e3e;
   padding: 0.5em;
 }
@@ -289,7 +289,7 @@ hr {
 }
 
 .feed-row:hover {
-  background: #141416;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #news {
@@ -305,12 +305,16 @@ hr {
 }
 
 @media (max-width: 1000px) {
-  #news {
-    grid-template-columns: 1fr;
+  #news, .dashboard {
+    grid-template-columns: 1fr !important;
   }
 }
 
-#news button {
+button {
+  cursor: pointer;
+}
+
+#news button, button {
   border: 1px solid #3e3e3e;
   background-color: #1d1d20;
   color: darkgray;
@@ -320,7 +324,7 @@ hr {
   transition: 0.1s ease;
 }
 
-#news button:hover, #news button.active {
+button:hover, #news button:hover, #news button.active {
   color: lime;
   border-color: #058605;
   background-color: #164016;
@@ -359,4 +363,82 @@ hr {
 .justify-between {
   display: flex;
   justify-content: space-between;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  border: 1px solid #3e3e3e;
+  border-radius: 5px;
+  background-color: #27272b;
+}
+
+.dash-details, .dash-chart {
+  padding: 1em;
+  font-size: 1.1rem;
+}
+
+.breadcrum {
+  padding: .5em;
+  color: gray;
+  display: flex;
+  justify-content: space-between;
+  /* border-bottom: 1px solid #3e3e3e; */
+  margin-bottom: 1em;
+  align-items: center;
+}
+
+.breadcrum-nav {
+  text-align: right;
+}
+
+.dash-chart {
+  border-left: 1px solid #3e3e3e;
+}
+
+.dash-details>div {
+  padding: .5em;
+  line-height: 1.5em;
+}
+
+.dash-details-price {
+  text-align: left;
+  margin: 2em 0;
+}
+
+.dash-details-price span {
+  font-size: 2em;
+  font-weight: bold;
+  /* color: gray; */
+}
+
+.dash-details-head {
+  display: flex;
+  align-items: center;
+  /* color: gray; */
+}
+
+.dash-details-head img {
+  margin-right: 1em;
+}
+
+.dash-details-vol>div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.scorecard__graph {
+  position: relative;
+}
+
+.scorecard__graph::before {
+  content: '';
+  display: block;
+  background: linear-gradient(#fff0, white);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  z-index: 10;
 }

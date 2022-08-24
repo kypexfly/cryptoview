@@ -1,7 +1,7 @@
 import NewsList from '../components/NewsList';
 const { useEffect, useState } = require('react')
 
-const News = () => {
+const News = ({ title }) => {
 
 
     const [news, setNews] = useState([])
@@ -58,25 +58,19 @@ const News = () => {
     }
 
     useEffect(() => {
+        document.title = title || "CryptoView"
         fetchNewsFeed()
     }, [])
 
 
     return (
-        <div>
+        <div className='container'>
 
             <h1>Crypto News</h1> <small>(Powered by <a href="https://cryptopanic.com/">CryptoPanic</a>)</small>
             <hr />
 
             <div id="news">
                 <div className="feed-options boxed">
-                    {/* <div>
-                        <h4>Type: </h4>
-                        <div>
-                            <button>news</button>
-                            <button>media</button>
-                        </div>
-                    </div> */}
                     <div>
                         <h4>Language</h4>
                         <div className='justify-between'>

@@ -1,14 +1,21 @@
-const About = () => {
+import { useEffect } from "react";
+
+const About = ({ title }) => {
+
+    useEffect(() => {
+        document.title = title || "CryptoView"
+    }, [])
+
     return (
-        <div>
+        <div className="container">
             <h1>About</h1>
             <hr />
 
             <div id="about">
 
-                <strong>CryptoView</strong> is a project that uses <a href="https://docs.coincap.io/">CoinCap API</a>. It provides some tools that everyone can use for free:
+                <strong>CryptoView</strong> is a project that uses <a href="https://docs.coincap.io/">CoinCap API</a> and <a href="https://cryptopanic.com/">CryptoPanic API</a>. It provides some tools that everyone can use for free:
                 <ul>
-                    <li>News feed from <a href="https://cryptopanic.com/">CryptoPanic</a></li>
+                    <li>News feed from CryptoPanic</li>
                     <li>Cryptocurrency Converter Calculator</li>
                     <li>List of top cryptocurrencies</li>
                 </ul>
