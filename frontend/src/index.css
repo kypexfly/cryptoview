@@ -258,6 +258,11 @@ hr {
   display: flex;
   border-bottom: 1px solid #3e3e3e;
   padding: 0.5em;
+  border-left: 2px solid transparent;
+}
+
+.feed-row.new {
+  border-left: 2px solid orange;
 }
 
 .feed-datetime {
@@ -425,4 +430,21 @@ button:hover, #news button:hover, #news button.active {
 .dash-details-vol>div {
   display: flex;
   justify-content: space-between;
+}
+
+.landing {
+  background-color: black;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgAgMAAADm7QMnAAAADFBMVEV3d3dOTk5OTk5OTk60BIz+AAAABHRSTlP/bytS3QghxwAAAEhJREFUeAFjZA1gQAevGVc5XPjy9z8K8Ytowd/YBf8zYIB/xGsfyhaNWjRq0ahFoxaNWkS4QhmtjwaDRaMWjVo0atGoRaP1EQDs2xO3GiLLhAAAAABJRU5ErkJggg==');
+min-height: 60vh;}
+
+.landing .container {
+  margin: 0 auto;
+  padding: 0;
+  overflow: auto;
+}
+
+.landbox {
+  background-color: #27272b;
+  padding: 1em;
+  margin: 1em;
 }

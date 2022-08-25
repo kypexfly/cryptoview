@@ -3,12 +3,14 @@ import { formatDistance } from 'date-fns'
 const NewsList = ({ anew }) => {
 
     const { published_at, url, title, kind, domain, currencies } = anew
+    const time_ago = formatDistance(new Date(published_at), new Date(), { addSuffix: false })
+    const get_minutes_ago = time_ago.match("([0-9]*) minutes$")
 
     return (
-        <div className="feed-row">
+        <div className={(get_minutes_ago ? get_minutes_ago[1] : undefined) < 10 ? "feed-row new" : "feed-row"}>
 
             <div className="feed-datetime">
-                {formatDistance(new Date(published_at), new Date(), { addSuffix: false })}
+                {time_ago} 
             </div>
 
             <div className="feed-title">

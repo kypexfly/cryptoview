@@ -7,10 +7,14 @@ const Home = ({ title }) => {
     }, [])
 
     return (
-        <div className="boxed">            
-            <center>
-                <h1>Welcome to CryptoView</h1>
-            </center>
+        <div id="home">
+            <section className="landing">
+                <div className="container">
+                    <div className="landbox">
+                        <h1>Welcome to CryptoView!</h1>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }
