@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const About = ({ title }) => {
 
-    useEffect(() => {
+    useEffect((title) => {
         document.title = title || "CryptoView"
     }, [])
 

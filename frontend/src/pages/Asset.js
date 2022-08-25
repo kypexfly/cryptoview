@@ -15,7 +15,7 @@ const Asset = () => {
         }
     }
 
-    useEffect(() => {
+    useEffect((coinid) => {
         fetchAsset()
         coinid && (document.title = (coinid + " - CryptoView") || "CryptoView")
     }, [])
