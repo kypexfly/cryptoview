@@ -4,9 +4,9 @@
   "description": "* https://stackoverflow.com/questions/42761068/paginate-javascript-array (should be done in backend)",
   "main": "index.js",
   "scripts": {
-    "frontend": "cd frontend && npm i && npm start",
-    "backend": "cd backend && npm i && npm run dev",
-    "app": "concurrently --kill-others \"npm:frontend\" \"npm:backend\" ",
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && npm run dev",
+    "app": "concurrently --kill-others-on-fail \"npm:frontend\" \"npm:backend\" ",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "repository": {
