@@ -24,16 +24,10 @@ const CoinList = ({ title }) => {
 
   return (
     <div id="assets">
-      <section className="landing">
-        <div className="container">
-          <div className="landbox">
-            {/* <h1>Welcome to CryptoView!</h1> */}
-          </div>
-        </div>
-      </section>
+
       <div className="container">
         <h1>Crypto Market Capitalization</h1>
-
+        <hr />
         <p>Last update: {new Date().toLocaleTimeString()}</p>
         <br />
 

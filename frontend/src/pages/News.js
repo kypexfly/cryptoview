@@ -57,7 +57,7 @@ const News = ({ title }) => {
         fetchNewsFeed(prev_url)
     }
 
-    useEffect(() => {
+    useEffect((title) => {
         document.title = title || "CryptoView"
         fetchNewsFeed()
     }, [])
@@ -66,7 +66,7 @@ const News = ({ title }) => {
     return (
         <div className='container'>
 
-            <h1>Crypto News</h1> <small>(Powered by <a href="https://cryptopanic.com/">CryptoPanic</a>)</small>
+            <h1>Crypto News</h1>
             <hr />
 
             <div id="news">

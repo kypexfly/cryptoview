@@ -7,7 +7,8 @@ const Dashboard = ({ asset }) => {
 
 
     const navigate = useNavigate()
-    const { id, rank, symbol, name, supply, maxSupply, marketCapUsd, volumeUsd24Hr, priceUsd, changePercent24Hr, vwap24Hr, explorer } = asset
+    // destructuring asset left values: supply, maxSupply, vwap24Hr
+    const { id, rank, symbol, name, marketCapUsd, volumeUsd24Hr, priceUsd, changePercent24Hr, explorer } = asset
 
 
     // const format_compact = Intl.NumberFormat("en", { notation: "compact" });
@@ -20,7 +21,7 @@ const Dashboard = ({ asset }) => {
             <div className="breadcrum">
                 <button onClick={() => navigate(-1)}><i className="fa-regular fa-circle-left"></i> Go back</button>
                 <div className='breadcrum-nav'>
-                <Link to="/">Home</Link> / <Link to="/assets">Assets</Link> / <strong><Link to={`/assets/${id}`}>{name}</Link></strong>
+                    <Link to="/">Home</Link> / <Link to="/assets">Assets</Link> / <strong><Link to={`/assets/${id}`}>{name}</Link></strong>
                 </div>
             </div>
 
@@ -67,19 +68,6 @@ const Dashboard = ({ asset }) => {
                 <div className="dash-chart">
                     <Chart />
                 </div>
-                {/*
-            <div>
-            <div><strong>rank:</strong> {rank}</div>
-            <div><strong>symbol:</strong> {symbol}</div>
-            <div><strong>name:</strong> {name}</div>
-            <div><strong>supply:</strong> {supply}</div>
-            <div><strong>maxSupply:</strong> {maxSupply}</div>
-            <div><strong>marketCapUsd:</strong> {marketCapUsd}</div>
-            <div><strong>volumeUsd24Hr:</strong> {volumeUsd24Hr}</div>
-            <div><strong>priceUsd:</strong> {priceUsd}</div>
-            
-            <div><strong>vwap24Hr:</strong> {vwap24Hr}</div>
-            <div><strong>explorer:</strong> <a href={explorer} target="_blank" rel="noopener noreferrer">{explorer}</a></div> */}
             </div >
 
             <ReactTooltip />
