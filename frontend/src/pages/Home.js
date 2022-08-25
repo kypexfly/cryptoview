@@ -2,24 +2,24 @@ import { useEffect } from "react";
 
 const Home = ({ title }) => {
 
-    useEffect((title) => {
+    useEffect(() => {
         document.title = title || "CryptoView"
     }, [])
 
     return (
         <div id="home">
-            {/* <section className="landing">
+            <section className="landing">
                 <div className="container">
                     <div className="landbox">
                         <h1>Welcome to CryptoView!</h1>
                     </div>
                 </div>
-            </section> */}
-            <section className="sections">
+            </section>
+            {/* <section className="sections">
                 <div className="container">
 
                 </div>
-            </section>
+            </section> */}
         </div>
     );
 }
