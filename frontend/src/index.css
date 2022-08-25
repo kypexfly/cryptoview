@@ -101,7 +101,7 @@ code {
 }
 
 .nav a.active {
-  color: orange;
+  color: white;
   border-bottom: 2px solid;
 }
 
@@ -119,7 +119,7 @@ code {
 }
 
 #assets>.container {
-  margin-top: -150px;
+  margin-top: -143px;
 }
 
 .coin-table {
@@ -139,15 +139,12 @@ code {
   background-color: #27272b;
 }
 
-#assets h1 {
-  text-shadow: 0 0 5px black;
-}
 
 .coin-table thead {
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  background-color: #393939;
+  /* background-color: #393939; */
 }
 
 .coin-table tbody tr:hover td {
@@ -229,7 +226,7 @@ code {
 .feed-list {
   line-height: 1.2em;
   padding: 0.5em;
-  min-height: 60vh;
+  min-height: 100px;
   /* overflow: scroll; */
 }
 
