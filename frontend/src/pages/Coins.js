@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
 
 const CoinList = ({ title }) => {
 
@@ -61,12 +62,12 @@ const CoinList = ({ title }) => {
                     alt={asset.symbol}
                   />
                   <div>
-                    <a href={`/assets/${asset.id}`}>
+                    <Link to={`/assets/${asset.id}`}>
                       <strong>{asset.name}</strong>
                       <p>
                         <small className="text-gray">{asset.symbol}</small>
                       </p>
-                    </a>
+                    </Link>
                   </div>
                 </td>
                 <td>${format_asset.format(asset.priceUsd)}</td>
