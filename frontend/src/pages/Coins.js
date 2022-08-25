@@ -48,7 +48,7 @@ const CoinList = ({ title }) => {
             {!assets.length ? (
               <tr className="coin-load">
                 <td colSpan="100%" className="center">
-                  <div className="loading"><i className="fas fa-sync fa-spin"></i> Loading...</div>
+                  <div className='loading'><span><i className="fas fa-sync fa-spin"></i> Loading...</span></div>
                 </td>
               </tr>
             ) : (

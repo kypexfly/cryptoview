@@ -57,7 +57,7 @@ const News = ({ title }) => {
         fetchNewsFeed(prev_url)
     }
 
-    useEffect((title) => {
+    useEffect(() => {
         document.title = title || "CryptoView"
         fetchNewsFeed()
     }, [])
@@ -72,14 +72,14 @@ const News = ({ title }) => {
             <div id="news">
                 <div className="feed-options boxed">
                     <div>
-                        <h4>Language</h4>
-                        <div className='justify-between'>
-                            <button className={eng.enable ? "active" : undefined} onClick={eng.afunct} value="en">english</button>
-                            <button className={spa.enable ? "active" : undefined} onClick={spa.afunct} value="es">español</button>
-                            <button className={por.enable ? "active" : undefined} onClick={por.afunct} value="pt">português</button>
-                            <button className={fra.enable ? "active" : undefined} onClick={fra.afunct} value="fr">français</button>
-                            <button className={rus.enable ? "active" : undefined} onClick={rus.afunct} value="ru">русский</button>
-                        </div>
+                        <span>Language</span>
+                        <span className='justify-between'>
+                            <button className={eng.enable ? "active" : undefined} onClick={eng.afunct} value="en">en</button>
+                            <button className={spa.enable ? "active" : undefined} onClick={spa.afunct} value="es">es</button>
+                            <button className={por.enable ? "active" : undefined} onClick={por.afunct} value="pt">pt</button>
+                            <button className={fra.enable ? "active" : undefined} onClick={fra.afunct} value="fr">fr</button>
+                            <button className={rus.enable ? "active" : undefined} onClick={rus.afunct} value="ru">ru</button>
+                        </span>
 
                         <button
                             className='button'
