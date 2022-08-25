@@ -1,7 +1,11 @@
 const express = require("express");
 const axios = require("axios");
+const path = require('path')
 
 app = express();
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '../frontend/build')))
 
 // middleware
 app.use(express.json());
@@ -70,7 +74,7 @@ app.get("/api/rates/:asset", (req, res) => {
 app.get("/api/assets/:asset/history", (req, res) => {
 
   const t7dago = {
-    start:  new Date(new Date().getTime() - 7*(24 * 60 * 60 * 1000)).valueOf(),
+    start: new Date(new Date().getTime() - 7 * (24 * 60 * 60 * 1000)).valueOf(),
     end: new Date().getTime().valueOf()
   }
 
@@ -117,3 +121,7 @@ app.get("/api/news", (req, res) => {
     });
 });
 
+// AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../frontend/build/index.html'))
+})
