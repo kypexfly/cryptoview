@@ -6,7 +6,8 @@
   "scripts": {
     "frontend": "cd frontend && npm i && npm start",
     "backend": "cd backend && npm i && npm run dev",
-    "app": "concurrently --kill-others \"npm:frontend\" \"npm:backend\" "
+    "app": "concurrently --kill-others \"npm:frontend\" \"npm:backend\" ",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",
