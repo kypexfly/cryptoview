@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import ReactTooltip from 'react-tooltip';
 import Chart from './Chart';
 
@@ -20,7 +20,7 @@ const Dashboard = ({ asset }) => {
             <div className="breadcrum">
                 <button onClick={() => navigate(-1)}><i className="fa-regular fa-circle-left"></i> Go back</button>
                 <div className='breadcrum-nav'>
-                    <a href="/assets">Assets</a> / <strong><a href={`/assets/${id}`}>{name}</a></strong>
+                <Link to="/">Home</Link> / <Link to="/assets">Assets</Link> / <strong><Link to={`/assets/${id}`}>{name}</Link></strong>
                 </div>
             </div>
 
