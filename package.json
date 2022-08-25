@@ -1,0 +1,22 @@
+{
+  "name": "coinmarketcap_react_node",
+  "version": "1.0.0",
+  "description": "* https://stackoverflow.com/questions/42761068/paginate-javascript-array (should be done in backend)",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && npm i && npm start",
+    "backend": "cd backend && npm i && npm run dev",
+    "app": "concurrently --kill-others \"npm:frontend\" \"npm:backend\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kypexfly/coinmarketcap_react_node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kypexfly/coinmarketcap_react_node/issues"
+  },
+  "homepage": "https://github.com/kypexfly/coinmarketcap_react_node#readme"
+}

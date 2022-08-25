@@ -24,9 +24,9 @@ const Chart = () => {
     const date = dataPlot.map((timestep) => timestep.date)
 
     return (
-        <div>
-            <h4>Last 7 days</h4>
-            {!dataPlot.length ? undefined :
+        <div className="dash-chart-container">
+            <h4>CHART</h4>
+            {!dataPlot.length ? (<div className="loading"><i className="fas fa-spinner fa-pulse"></i></div>) :
                 (<Plot
                     data={[
                         {

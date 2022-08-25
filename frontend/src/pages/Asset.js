@@ -23,7 +23,9 @@ const Asset = () => {
     return (
         <div className="container">
             {!Object.keys(asset).length ?
-                (<div className='loading'><span><i className="fas fa-sync fa-spin"></i> Loading...</span></div>) :
+                ( undefined
+                // <div className='loading'><span><i className="fas fa-sync fa-spin"></i> Loading...</span></div>
+                ) :
                 <Dashboard asset={asset} />}
         </div>
     );

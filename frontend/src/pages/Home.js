@@ -15,6 +15,11 @@ const Home = ({ title }) => {
                     </div>
                 </div>
             </section>
+            <section className="sections">
+                <div className="container">
+
+                </div>
+            </section>
         </div>
     );
 }
