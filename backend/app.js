@@ -80,13 +80,13 @@ app.get("/api/rates/:asset", (req, res) => {
 app.get("/api/assets/:asset/history", (req, res) => {
 
   const t7dago = {
-    start: new Date(new Date().getTime() - 7 * (24 * 60 * 60 * 1000)).valueOf(),
+    start: new Date(new Date().getTime() - 1 * (24 * 60 * 60 * 1000)).valueOf(),
     end: new Date().getTime().valueOf()
   }
 
   const options = {
     method: "GET",
-    url: `https://api.coincap.io/v2/assets/${req.params.asset}/history?interval=h1&start=${t7dago.start}&end=${t7dago.end}`,
+    url: `https://api.coincap.io/v2/assets/${req.params.asset}/history?interval=m5&start=${t7dago.start}&end=${t7dago.end}`,
   };
 
   console.log(options.url)
