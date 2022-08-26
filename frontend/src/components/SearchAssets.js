@@ -1,56 +1,82 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Turnstone from 'turnstone'
 
-
+// https://blog.logrocket.com/create-customizable-react-search-component-autocomplete/
 
 const SearchAssets = () => {
 
-    const [searchAssets, setSearchAssets] = useState('')
-    const [resultAssets, setResultAssets] = useState([])
-
-    const handleSearchAssets = (e) => {
-        e.preventDefault()
-        setSearchAssets(e.target.value)
-    }
+    const navigate = useNavigate()
+    const [assetPath, setAssetPath] = useState('')
 
     useEffect(() => {
-        if (searchAssets.length > 1) {
-            fetch(`https://api.coincap.io/v2/assets?search=${searchAssets}&limit=5`)
-                .then(res => res.json())
-                .then(json => setResultAssets(json.data))
-        } else {
-            setResultAssets('')
+        assetPath && navigate(`/assets/${assetPath}`)
+
+    }, [assetPath])
+
+    const handleToAsset = (selectedItem, displayField) => {
+
+        if (typeof selectedItem !== "undefined") {
+            console.log(selectedItem.id)
+            setAssetPath(selectedItem.id)
         }
-    }, [searchAssets])
+    }
+
+    // Turnstone params
+
+    const maxItems = 5
+    const listbox = [
+        {
+            id: 'name',
+            ratio: 1,
+            displayField: 'id',
+            data: (query) =>
+                fetch(`https://api.coincap.io/v2/assets?search=${encodeURIComponent(query)}&limit=${maxItems}`)
+                    .then(response => response.json())
+                    .then(json => json.data),
+            searchType: 'startswith'
+        }
+    ]
+
+    const Item = ({ item }) => {
+        return (
+            <Link to={`/assets/${item.id}`}>
+                <img
+                    width={30}
+                    height={30}
+                    loading="lazy"
+                    src={`https://assets.coincap.io/assets/icons/${String(item.symbol).toLowerCase()}@2x.png`}
+                    alt={item.symbol}
+                />
+                <div>
+                    <small><strong>[{item.symbol}]</strong></small>
+                    <p>{`${item.name}`}</p>
+                </div>
+            </Link>
+        )
+    }
 
 
     return (
-        <div>
-            <input
-                onChange={handleSearchAssets}
-                className="searchbar"
+        <div id='search-box'>
+            <Turnstone
+                debounceWait={250}
+                id="searchbar"
+                listbox={listbox}
+                listboxIsImmutable={true}
+                matchText={true}
+                maxItems={maxItems}
+                autoFocus={true}
+                name="assets"
+                noItemsMessage="We didn't found, please try again..."
                 placeholder="search a coin..."
-                autoComplete="off"
+                typeahead={true}
+                Item={Item}
+                onSelect={handleToAsset}
+            // ref={turnstoneRef}
             />
-
-            <div className='search-results'>
-                {resultAssets && resultAssets.map((asset, index) =>
-                (<Link to={`/assets/${asset.id}`} key={index}>
-
-                    <img
-                        width={30}
-                        height={30}
-                        loading="lazy"
-                        src={`https://assets.coincap.io/assets/icons/${String(asset.symbol).toLowerCase()}@2x.png`}
-                        alt={asset.symbol}
-                    />
-                    <div>
-                        <small><strong>[{asset.symbol}]</strong></small>
-                        <p>{`${asset.name}`}</p>
-                    </div>
-                </Link>)
-                )}
-            </div>
+            {/* <button onClick={handleQuery}><i className="fa-solid fa-magnifying-glass"></i></button>
+            <button onClick={handleClear}><i className="fa-regular fa-circle-xmark"></i></button> */}
         </div>
     );
 }
