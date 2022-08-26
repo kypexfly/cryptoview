@@ -64,49 +64,50 @@ const News = ({ title }) => {
 
 
     return (
-        <div className='container'>
+        <div>
+            <div className='container'>
 
-            <h1>Crypto News</h1>
-            <hr />
+                <h1>Crypto News</h1>
+                <hr />
 
-            <div id="news">
-                <div className="feed-options boxed">
-                    <div>
-                        <span>Language</span>
-                        <span className='justify-between'>
-                            <button className={eng.enable ? "active" : undefined} onClick={eng.afunct} value="en">en</button>
-                            <button className={spa.enable ? "active" : undefined} onClick={spa.afunct} value="es">es</button>
-                            <button className={por.enable ? "active" : undefined} onClick={por.afunct} value="pt">pt</button>
-                            <button className={fra.enable ? "active" : undefined} onClick={fra.afunct} value="fr">fr</button>
-                            <button className={rus.enable ? "active" : undefined} onClick={rus.afunct} value="ru">ru</button>
-                        </span>
-
-                        <button
-                            className='button'
-                            onClick={handleLang}>
-                            Save
-                        </button>
-
-                    </div>
-                    <div>
-                        <h4>Page</h4>
+                <div id="news">
+                    <div className="feed-options boxed">
                         <div>
-                            <button onClick={handlePrev} disabled={(news.previous == null) ? 1 : 0} >prev</button>
-                            <button onClick={handleNext} disabled={(news.next == null) ? 1 : 0}>next</button>
+                            <h4>Language</h4>
+                            <span className='justify-between'>
+                                <button className={eng.enable ? "active" : undefined} onClick={eng.afunct} value="en">en</button>
+                                <button className={spa.enable ? "active" : undefined} onClick={spa.afunct} value="es">es</button>
+                                <button className={por.enable ? "active" : undefined} onClick={por.afunct} value="pt">pt</button>
+                                <button className={fra.enable ? "active" : undefined} onClick={fra.afunct} value="fr">fr</button>
+                                <button className={rus.enable ? "active" : undefined} onClick={rus.afunct} value="ru">ru</button>
+                            </span>
+
+                            <button
+                                className='button'
+                                onClick={handleLang}>
+                                Save
+                            </button>
+
                         </div>
+                        <div>
+                            <h4>Page</h4>
+                            <div>
+                                <button onClick={handlePrev} disabled={(news.previous == null) ? 1 : 0} >prev</button>
+                                <button onClick={handleNext} disabled={(news.next == null) ? 1 : 0}>next</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className="feed-list">
+                        {!news.results ? (<div className='loading'><span><i className="fas fa-sync fa-spin"></i> Loading...</span></div>) :
+                            news.results.map((anew, index) => (
+                                <NewsList anew={anew} key={index} />
+                            ))}
                     </div>
 
                 </div>
-
-                <div className="feed-list">
-                    {!news.results ? (<div className='loading'><span><i className="fas fa-sync fa-spin"></i> Loading...</span></div>) :
-                        news.results.map((anew, index) => (
-                            <NewsList anew={anew} key={index} />
-                        ))}
-                </div>
-
             </div>
-
         </div>
     );
 };

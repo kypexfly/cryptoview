@@ -26,7 +26,7 @@ const Converter = ({ title }) => {
   }
 
   useEffect(() => {
-    
+
     document.title = title || "CryptoView"
 
     fetchAssetRates(leftCoin, rightCoin)
@@ -37,53 +37,54 @@ const Converter = ({ title }) => {
   });
 
   return (
-    <div className="container">
+    <div>
+      <div className="container">
 
-      <h1>Cryptocurrency Converter Calculator</h1>
-      <hr />
+        <h1>Cryptocurrency Converter Calculator</h1>
+        <hr />
 
 
-      <div id="converter">
+        <div id="converter">
 
-        <input
-          className="set-amount"
-          type="number"
-          defaultValue={1}
-          placeholder="Ingrese el monto al convertidor"
-          onChange={e => setAmount(e.target.value)}
-        />
+          <input
+            className="set-amount"
+            type="number"
+            defaultValue={1}
+            placeholder="Ingrese el monto al convertidor"
+            onChange={e => setAmount(e.target.value)}
+          />
 
-        <div>
-          <select name="leftSide"
-            onChange={e => setLeftCoin(e.target.value)}>
+          <div>
+            <select name="leftSide"
+              onChange={e => setLeftCoin(e.target.value)}>
 
-            <option value="bitcoin">Bitcoin (BTC)</option>
-            <option value="ethereum">Ethereum (ETH)</option>
-            <option value="united-states-dollar">United States Dollar (USD)</option>
-            <option value="euro">Euro (EUR)</option>
-          </select>
+              <option value="bitcoin">Bitcoin (BTC)</option>
+              <option value="ethereum">Ethereum (ETH)</option>
+              <option value="united-states-dollar">United States Dollar (USD)</option>
+              <option value="euro">Euro (EUR)</option>
+            </select>
 
-          <select name="rightSide" defaultValue={"united-states-dollar"}
-            onChange={e => setRightCoin(e.target.value)}>
+            <select name="rightSide" defaultValue={"united-states-dollar"}
+              onChange={e => setRightCoin(e.target.value)}>
 
-            <option value="bitcoin">Bitcoin (BTC)</option>
-            <option value="ethereum">Ethereum (ETH)</option>
-            <option value="united-states-dollar">United States Dollar (USD)</option>
-            <option value="euro">Euro (EUR)</option>
-          </select>
+              <option value="bitcoin">Bitcoin (BTC)</option>
+              <option value="ethereum">Ethereum (ETH)</option>
+              <option value="united-states-dollar">United States Dollar (USD)</option>
+              <option value="euro">Euro (EUR)</option>
+            </select>
 
-          <div className="conversion-result">
-            <p style={{ fontSize: "20px" }}>
-              <strong>{format_asset.format(amount)}</strong> {leftPrice.symbol} = <strong>
-                {!rightPrice.rateUsd ? (<i className="fas fa-sync fa-spin"></i>) :
-                  (format_asset.format(amount * leftPrice.rateUsd / rightPrice.rateUsd))}
-              </strong> {rightPrice.symbol}
-            </p>
+            <div className="conversion-result">
+              <p style={{ fontSize: "20px" }}>
+                <strong>{format_asset.format(amount)}</strong> {leftPrice.symbol} = <strong>
+                  {!rightPrice.rateUsd ? (<i className="fas fa-sync fa-spin"></i>) :
+                    (format_asset.format(amount * leftPrice.rateUsd / rightPrice.rateUsd))}
+                </strong> {rightPrice.symbol}
+              </p>
+            </div>
+
           </div>
-
         </div>
       </div>
-
     </div>
   );
 };

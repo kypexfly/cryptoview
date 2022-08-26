@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from 'react-router-dom'
 
 const Home = ({ title }) => {
 
@@ -12,15 +13,22 @@ const Home = ({ title }) => {
                 <div className="container">
                     <div className="landbox">
                         <h1>Welcome to CryptoView!</h1>
+
+                        <p>Sign up to access some interesting features and more!</p>
+
+                        <div className="landing-sign">
+                            <Link to="/signup" className="btn-link">Sign Up</Link>
+                            <Link to="/login" className="btn-link">Login</Link>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </section >
             {/* <section className="sections">
                 <div className="container">
 
                 </div>
             </section> */}
-        </div>
+        </div >
     );
 }
 

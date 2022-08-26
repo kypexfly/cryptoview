@@ -25,7 +25,7 @@ const Chart = () => {
 
     return (
         <div className="dash-chart-container">
-            <h4>CHART</h4>
+            <h4>Chart from last 24h</h4>
             {!dataPlot.length ? (<div className="loading"><i className="fas fa-spinner fa-pulse"></i></div>) :
                 (<Plot
                     data={[

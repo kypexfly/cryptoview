@@ -21,7 +21,7 @@ const Dashboard = ({ asset }) => {
             <div className="breadcrum">
                 <button onClick={() => navigate(-1)}><i className="fa-regular fa-circle-left"></i> Go back</button>
                 <div className='breadcrum-nav'>
-                    <Link to="/">Home</Link> / <Link to="/assets">Assets</Link> / <strong><Link to={`/assets/${id}`}>{name}</Link></strong>
+                    / <Link to="/assets">Assets</Link> / <strong><Link to={`/assets/${id}`}>{name}</Link></strong>
                 </div>
             </div>
 

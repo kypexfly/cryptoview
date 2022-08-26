@@ -10,7 +10,7 @@ const CoinList = ({ title }) => {
     const json = await response.json();
 
     if (response.ok) {
-      setAssets(json.data.slice(0, 20));
+      setAssets(json.data.slice(0, 30));
     }
   };
 
@@ -28,7 +28,7 @@ const CoinList = ({ title }) => {
       <div className="container">
         <h1>Crypto Market Capitalization</h1>
         <hr />
-        <p>Last update: {new Date().toLocaleTimeString()}</p>
+        <p className="right">Last update: {new Date().toLocaleTimeString()}</p>
         <br />
 
         <table className="coin-table">

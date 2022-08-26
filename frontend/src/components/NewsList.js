@@ -10,7 +10,7 @@ const NewsList = ({ anew }) => {
         <div className={(get_minutes_ago ? get_minutes_ago[1] : undefined) < 10 ? "feed-row new" : "feed-row"}>
 
             <div className="feed-datetime">
-                {time_ago} 
+                {time_ago}
             </div>
 
             <div className="feed-title">
@@ -19,7 +19,7 @@ const NewsList = ({ anew }) => {
                 </a>
 
                 <div>
-                    <span className="feed-title-kind">({kind})</span>
+                    <span className={`feed-title-kind ${(kind === "media") && "price-green"}`}>({kind})</span>
                     {currencies && currencies.map((currency, index) => (
                         <span className='badge' key={index}>{currency.code}</span>
                     ))}
