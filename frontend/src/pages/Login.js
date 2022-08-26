@@ -6,6 +6,7 @@ const Login = () => {
         <div className="container">
             <div className="boxed">
                 <h1>Login</h1>
+                <hr/>
 
                 <LoginForm />
 
