@@ -9,6 +9,8 @@ import Coins from "./pages/Coins";
 import News from "./pages/News";
 import About from "./pages/About";
 import Converter from "./pages/Converter";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
             <Route path="/news" element={<News title="News - CryptoView" />} />
             <Route path="/about" element={<About title="About - CryptoView" />} />
             <Route path="/converter" element={<Converter title="Converter - CryptoView" />} />
+            <Route path="/signup" element={<SignUp title="Sign Up - CryptoView" />} />
+            <Route path="/login" element={<Login title="Login - CryptoView" />} />
           </Routes>
         </div>
 
