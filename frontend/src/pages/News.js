@@ -1,3 +1,4 @@
+import { set } from 'date-fns/esm';
 import NewsList from '../components/NewsList';
 const { useEffect, useState } = require('react')
 
@@ -6,6 +7,7 @@ const News = ({ title }) => {
 
     const [news, setNews] = useState([])
     const [langs, setLangs] = useState('')
+    const [numpage, setNumpage] = useState(1)
 
     const handleLang = async () => {
         const lang_param = [eng.lang, spa.lang, por.lang, fra.lang, rus.lang].filter(Boolean).join(',')
@@ -13,6 +15,7 @@ const News = ({ title }) => {
         const lang_url = "/api/news?regions=".concat(lang_param)
         setNews([])
         fetchNewsFeed(lang_url)
+        setNumpage(1)
     }
 
     const useHandleParams = (enableState, langState) => {
@@ -48,6 +51,7 @@ const News = ({ title }) => {
         const next_url = "/api/news?".concat(news.next.match("&page=.*"), "&regions=", langs)
         setNews([])
         fetchNewsFeed(next_url)
+        setNumpage(numpage + 1)
     }
 
     const handlePrev = async () => {
@@ -55,6 +59,7 @@ const News = ({ title }) => {
         const prev_url = "/api/news?".concat(news.previous.match("&page=.*"), "&regions=", langs)
         setNews([])
         fetchNewsFeed(prev_url)
+        setNumpage(numpage + -1)
     }
 
     useEffect(() => {
@@ -72,28 +77,30 @@ const News = ({ title }) => {
 
                 <div id="news">
                     <div className="feed-options boxed">
-                        <div>
-                            <h4>Language</h4>
-                            <span className='justify-between'>
-                                <button className={eng.enable ? "active" : undefined} onClick={eng.afunct} value="en">en</button>
-                                <button className={spa.enable ? "active" : undefined} onClick={spa.afunct} value="es">es</button>
-                                <button className={por.enable ? "active" : undefined} onClick={por.afunct} value="pt">pt</button>
-                                <button className={fra.enable ? "active" : undefined} onClick={fra.afunct} value="fr">fr</button>
-                                <button className={rus.enable ? "active" : undefined} onClick={rus.afunct} value="ru">ru</button>
-                            </span>
-
-                            <button
-                                className='button'
-                                onClick={handleLang}>
-                                Save
-                            </button>
-
-                        </div>
-                        <div>
-                            <h4>Page</h4>
+                        <div className='sticky'>
                             <div>
-                                <button onClick={handlePrev} disabled={(news.previous == null) ? 1 : 0} >prev</button>
-                                <button onClick={handleNext} disabled={(news.next == null) ? 1 : 0}>next</button>
+                                <h4>Language</h4>
+                                <span className='justify-between'>
+                                    <button className={eng.enable ? "active" : undefined} onClick={eng.afunct} value="en">en</button>
+                                    <button className={spa.enable ? "active" : undefined} onClick={spa.afunct} value="es">es</button>
+                                    <button className={por.enable ? "active" : undefined} onClick={por.afunct} value="pt">pt</button>
+                                    <button className={fra.enable ? "active" : undefined} onClick={fra.afunct} value="fr">fr</button>
+                                    <button className={rus.enable ? "active" : undefined} onClick={rus.afunct} value="ru">ru</button>
+                                </span>
+
+                                <button
+                                    className='button'
+                                    onClick={handleLang}>
+                                    Save
+                                </button>
+
+                            </div>
+                            <div>
+                                <h4>Page {numpage} / 10</h4>
+                                <div>
+                                    <button onClick={handlePrev} disabled={(news.previous == null) ? 1 : 0} >prev</button>
+                                    <button onClick={handleNext} disabled={(news.next == null) ? 1 : 0}>next</button>
+                                </div>
                             </div>
                         </div>
 

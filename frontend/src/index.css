@@ -99,16 +99,20 @@ code {
   padding: 0 1em;
   margin-right: 1em;
   height: inherit;
-  display: flex;
-  align-content: center;
+}
+
+.hide {
+  display: none;
 }
 
 #logo a {
-  align-self: center;
-  height: inherit;
+  display: flex;
+  align-items: center;
   font-size: 1.17em;
   font-weight: bold;
   color: white;
+  height: 100%;
+  text-align: center;
 }
 
 #logo a i, .conversion-result strong {
@@ -124,7 +128,7 @@ code {
 }
 
 .nav a {
-  padding: 0.5em 1em;
+  padding: .5em .5em;
   color: gray;
   transition: 0.1s ease;
   border-bottom: 2px solid darkgray;
@@ -146,7 +150,7 @@ code {
   /* background-color: #27272b; */
   max-width: 1360px;
   border-radius: 5px;
-  overflow: auto;
+  /* overflow: auto; */
   box-sizing: border-box;
 }
 
@@ -216,10 +220,37 @@ code {
 .searchbar {
   background-color: #232326;
   border: 1px solid #3e3e3e;
-  width: 50%;
+  width: 450px;
+  max-width: 500px;
   color: lightgray;
   border-radius: 5px;
   padding: 0.75em;
+}
+
+.search-results {
+  position: absolute;
+  background-color: #232326;
+  width: 450px;
+  max-width: 500px;
+  z-index: 1;
+  /* display: none; */
+}
+
+/* .searchbar:focus~.search-results {
+  display: block;
+} */
+
+.search-results a {
+  padding: .5em;
+  color: lightgray;
+  border-bottom: 1px solid #3e3e3e;
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+}
+
+.search-results a:hover {
+  background-color: var(--badge-color);
 }
 
 .set-amount {
@@ -236,6 +267,7 @@ code {
 .searchbar:focus-visible, .set-amount:focus-visible {
   outline: 1px solid var(--main-color);
 }
+
 
 .center {
   text-align: center;
@@ -473,6 +505,11 @@ button:hover, #news button:hover, #news button.active, .btn-link:hover {
   background-color: #27272b;
   color: gray;
   border-color: #3e3e3e;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
 }
 
 .loading {
