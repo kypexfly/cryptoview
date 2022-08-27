@@ -14,12 +14,12 @@ const Converter = ({ title }) => {
 
     setRightPrice({})
 
-    fetch(`/api/rates/${first}`)
+    fetch(`/api/assets/rates/${first}`)
       .then(res => res.json())
       .then(json => setLeftPrice(json.data))
       .catch(err => console.log(err))
 
-    fetch(`/api/rates/${second}`)
+    fetch(`/api/assets/rates/${second}`)
       .then(res => res.json())
       .then(json => setRightPrice(json.data))
       .catch(err => console.log(err))
