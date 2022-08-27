@@ -59,13 +59,32 @@ app.get("/api/assets", (req, res) => {
     });
 });
 
+app.get("/api/search", (req, res) => {
+
+  const options = {
+    method: "GET",
+    url: `https://api.coincap.io/v2/assets?search=${req.query.search}&limit=${req.query.limit}`
+  };
+
+  console.log("✨ Assets results for searchbar: ", options.url)
+
+  axios
+    .request(options)
+    .then(function (response) {
+      res.status(200).json(response.data);
+    })
+    .catch(function (error) {
+      res.status(400).json(error);
+    });
+});
+
 app.get("/api/rates/:asset", (req, res) => {
   const options = {
     method: "GET",
     url: `https://api.coincap.io/v2/rates/${req.params.asset}`,
   };
 
-  console.log(options.url)
+  console.log("✨ PriceUSD for converter: ", options.url)
 
   axios
     .request(options)

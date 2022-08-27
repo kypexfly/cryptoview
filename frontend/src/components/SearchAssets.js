@@ -17,7 +17,7 @@ const SearchAssets = () => {
     const handleToAsset = (selectedItem, displayField) => {
 
         if (typeof selectedItem !== "undefined") {
-            console.log(selectedItem.id)
+            // console.log(selectedItem.id) // log for dev test
             setAssetPath(selectedItem.id)
         }
     }
@@ -31,7 +31,7 @@ const SearchAssets = () => {
             ratio: 1,
             displayField: 'id',
             data: (query) =>
-                fetch(`https://api.coincap.io/v2/assets?search=${encodeURIComponent(query)}&limit=${maxItems}`)
+                fetch(`/api/search/?search=${encodeURIComponent(query)}&limit=${maxItems}`)
                     .then(response => response.json())
                     .then(json => json.data),
             searchType: 'startswith'
