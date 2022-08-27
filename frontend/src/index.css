@@ -522,6 +522,12 @@ form input {
   padding: 0.75em;
   margin: .5em 0 .5em 0;
   color: lightgray;
+  border-radius: 5px;
+  outline: none;
+}
+
+form input:focus {
+  border: 1px solid var(--main-color) !important;
 }
 
 #news .button, .btn-link {
