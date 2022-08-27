@@ -3,6 +3,7 @@ node_modules
 # dependencies
 /.pnp
 .pnp.js
+.eslintrc.js
 
 # testing
 frontend/coverage
