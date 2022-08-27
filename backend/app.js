@@ -1,5 +1,8 @@
+require("dotenv").config()
+
 const express = require("express");
 const axios = require("axios");
+const mongoose = require("mongoose")
 const path = require('path')
 
 // Heroku dynamically assigns your app a port, so you can't set the port to a fixed number. 
@@ -21,9 +24,19 @@ app.use((req, res, next) => {
   next();
 });
 
-app.listen((port = process.env.PORT || 4000), () => {
-  console.log("App listening to port 4000...");
-});
+
+// start app-server-api
+
+mongoose.connect(process.env.MONG_URI)
+  .then(() => {
+    app.listen((port = process.env.PORT || 4000), () => {
+      console.log(`💚 Connected to database and listening to port ${port}...`);
+    })
+  })
+  .catch(err => console.log(err));
+
+
+
 
 // routes
 
