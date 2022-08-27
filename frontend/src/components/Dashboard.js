@@ -1,4 +1,3 @@
-import { useNavigate, Link } from 'react-router-dom'
 import ReactTooltip from 'react-tooltip';
 import Chart from './Chart';
 
@@ -6,9 +5,8 @@ import Chart from './Chart';
 const Dashboard = ({ asset }) => {
 
 
-    const navigate = useNavigate()
-    // destructuring asset left values: supply, maxSupply, vwap24Hr
-    const { id, rank, symbol, name, marketCapUsd, volumeUsd24Hr, priceUsd, changePercent24Hr, explorer } = asset
+    // destructuring id, asset left values: supply, maxSupply, vwap24Hr
+    const { rank, symbol, name, marketCapUsd, volumeUsd24Hr, priceUsd, changePercent24Hr, explorer } = asset
 
 
     // const format_compact = Intl.NumberFormat("en", { notation: "compact" });
@@ -17,17 +15,12 @@ const Dashboard = ({ asset }) => {
     });
 
     return (
-        <div>
-            <div className="breadcrum">
-                <button onClick={() => navigate(-1)}><i className="fa-regular fa-circle-left"></i> Go back</button>
-                <div className='breadcrum-nav'>
-                    / <Link to="/assets">Assets</Link> / <strong><Link to={`/assets/${id}`}>{name}</Link></strong>
-                </div>
-            </div>
+        <>
+
 
             <div className="dashboard">
 
-                <div className="dash-details">
+            <div className="dash-details">
                     <div className="dash-details-head">
                         <img width="64px" src={`https://assets.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png`} alt={symbol} />
                         <div>
@@ -72,7 +65,7 @@ const Dashboard = ({ asset }) => {
 
             <ReactTooltip />
 
-        </div>
+        </>
     );
 }
 
