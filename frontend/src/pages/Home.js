@@ -1,13 +1,12 @@
-import { useEffect } from "react";
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const Home = ({ title }) => {
+  useEffect(() => {
+    document.title = title || 'CryptoView'
+  }, [])
 
-    useEffect(() => {
-        document.title = title || "CryptoView"
-    }, [])
-
-    return (
+  return (
         <div id="home">
             <section className="landing">
                 <div className="container">
@@ -23,13 +22,8 @@ const Home = ({ title }) => {
                     </div>
                 </div>
             </section >
-            {/* <section className="sections">
-                <div className="container">
-
-                </div>
-            </section> */}
         </div >
-    );
+  )
 }
 
-export default Home;
+export default Home

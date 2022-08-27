@@ -1,17 +1,15 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import ReactTooltip from 'react-tooltip';
-import SearchAssets from "./SearchAssets";
+import { Link, useLocation } from 'react-router-dom'
 
+import ReactTooltip from 'react-tooltip'
+import SearchAssets from './SearchAssets'
 
 const Navbar = () => {
-
   const useActiveNav = (loc) => {
-    const location = useLocation();
+    const location = useLocation()
     if (location.pathname === loc) {
-      return "active";
+      return 'active'
     }
-  };
+  }
 
   return (
     <header>
@@ -24,23 +22,23 @@ const Navbar = () => {
           <SearchAssets />
 
           <div className="nav">
-            <Link to="/assets" data-tip="Assets" className={useActiveNav("/assets")}>
+            <Link to="/assets" data-tip="Assets" className={useActiveNav('/assets')}>
               <i className="fa-solid fa-ranking-star"></i>
             </Link>
-            <Link to="/news" data-tip="News" className={useActiveNav("/news")}>
+            <Link to="/news" data-tip="News" className={useActiveNav('/news')}>
               <i className="fa-solid fa-newspaper"></i>
             </Link>
-            <Link to="/converter" data-tip="Converter" className={useActiveNav("/converter")}>
+            <Link to="/converter" data-tip="Converter" className={useActiveNav('/converter')}>
               <i className="fa-solid fa-calculator"></i>
             </Link>
-            <Link to="/about" data-tip="About" className={useActiveNav("/about")}>
+            <Link to="/about" data-tip="About" className={useActiveNav('/about')}>
               <i className="fa-solid fa-circle-info"></i>
             </Link>
             <span>
-              <Link to="/signup" data-tip="Sign Up" className={useActiveNav("/signup")}>
+              <Link to="/signup" data-tip="Sign Up" className={useActiveNav('/signup')}>
                 <i className="fa-solid fa-arrow-right-to-bracket"></i>
               </Link>
-              <Link to="/login" data-tip="Login" className={useActiveNav("/login")}>
+              <Link to="/login" data-tip="Login" className={useActiveNav('/login')}>
                 <i className="fa-solid fa-user"></i>
               </Link>
             </span>
@@ -49,7 +47,7 @@ const Navbar = () => {
       </div>
       <ReactTooltip />
     </header>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

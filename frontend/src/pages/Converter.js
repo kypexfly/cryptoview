@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
 
 const Converter = ({ title }) => {
-
   const [amount, setAmount] = useState(1)
-  const [leftCoin, setLeftCoin] = useState("bitcoin")
-  const [rightCoin, setRightCoin] = useState("united-states-dollar")
+  const [leftCoin, setLeftCoin] = useState('bitcoin')
+  const [rightCoin, setRightCoin] = useState('united-states-dollar')
   const [leftPrice, setLeftPrice] = useState({})
   const [rightPrice, setRightPrice] = useState({})
 
   const fetchAssetRates = async (first, second) => {
-
-    // updates both assets price at the same time to get realtime rate conversion 
+    // updates both assets price at the same time to get realtime rate conversion
 
     setRightPrice({})
 
@@ -26,15 +24,14 @@ const Converter = ({ title }) => {
   }
 
   useEffect(() => {
-
-    document.title = title || "CryptoView"
+    document.title = title || 'CryptoView'
 
     fetchAssetRates(leftCoin, rightCoin)
   }, [leftCoin, rightCoin])
 
-  let format_asset = Intl.NumberFormat("en", {
+  const format_asset = Intl.NumberFormat('en', {
     maximumSignificantDigits: 7
-  });
+  })
 
   return (
     <div>
@@ -42,7 +39,6 @@ const Converter = ({ title }) => {
 
         <h1>Cryptocurrency Converter Calculator</h1>
         <hr />
-
 
         <div id="converter">
 
@@ -64,7 +60,7 @@ const Converter = ({ title }) => {
               <option value="euro">Euro (EUR)</option>
             </select>
 
-            <select name="rightSide" defaultValue={"united-states-dollar"}
+            <select name="rightSide" defaultValue={'united-states-dollar'}
               onChange={e => setRightCoin(e.target.value)}>
 
               <option value="bitcoin">Bitcoin (BTC)</option>
@@ -74,10 +70,11 @@ const Converter = ({ title }) => {
             </select>
 
             <div className="conversion-result">
-              <p style={{ fontSize: "20px" }}>
+              <p style={{ fontSize: '20px' }}>
                 <strong>{format_asset.format(amount)}</strong> {leftPrice.symbol} = <strong>
-                  {!rightPrice.rateUsd ? (<i className="fas fa-sync fa-spin"></i>) :
-                    (format_asset.format(amount * leftPrice.rateUsd / rightPrice.rateUsd))}
+                  {!rightPrice.rateUsd
+                    ? (<i className="fas fa-sync fa-spin"></i>)
+                    : (format_asset.format(amount * leftPrice.rateUsd / rightPrice.rateUsd))}
                 </strong> {rightPrice.symbol}
               </p>
             </div>
@@ -86,7 +83,7 @@ const Converter = ({ title }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Converter;
+export default Converter

@@ -1,21 +1,19 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 // pages
-import Home from "./pages/Home";
-import Asset from "./pages/Asset";
-import Coins from "./pages/Coins";
-import News from "./pages/News";
-import About from "./pages/About";
-import Converter from "./pages/Converter";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
-import UserProfile from "./pages/UserProfile";
+import Home from './pages/Home'
+import Asset from './pages/Asset'
+import Coins from './pages/Coins'
+import News from './pages/News'
+import About from './pages/About'
+import Converter from './pages/Converter'
+import SignUp from './pages/SignUp'
+import Login from './pages/Login'
+import UserProfile from './pages/UserProfile'
 
-function App() {
-
-
+function App () {
   return (
     <div className="App">
       <BrowserRouter>
@@ -37,7 +35,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
