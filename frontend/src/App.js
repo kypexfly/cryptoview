@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Converter from "./pages/Converter";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/converter" element={<Converter title="Converter - CryptoView" />} />
             <Route path="/signup" element={<SignUp title="Sign Up - CryptoView" />} />
             <Route path="/login" element={<Login title="Login - CryptoView" />} />
+            <Route path="/users/:userid" element={<UserProfile title="User Profile - CryptoView" />} />
           </Routes>
         </div>
 
