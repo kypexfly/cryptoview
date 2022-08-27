@@ -17,8 +17,9 @@ const Chart = () => {
     }
 
     useEffect(() => {
+        setDataPlot([])
         fetchAssetHistoryPrice()
-    }, [])
+    }, [coinid])
 
     const priceUsd = dataPlot.map((timestep) => timestep.priceUsd)
     const date = dataPlot.map((timestep) => timestep.date)
@@ -47,7 +48,7 @@ const Chart = () => {
                     ]}
                     layout={{
                         autosize: true,
-                        margin: { t: 0, b: 40, l: 80, r: 30 },
+                        margin: { t: 15, b: 40, l: 80, r: 30 },
                         color: "rgba(0,0,0,0)",
                         paper_bgcolor: "rgba(0,0,0,0)",
                         plot_bgcolor: "rgba(0,0,0,0)",
