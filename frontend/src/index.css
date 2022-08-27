@@ -488,6 +488,24 @@ button {
   cursor: pointer;
 }
 
+button.descending::before {
+  content: "\f151" !important;
+  font-family: "Font Awesome 6 Free";
+  margin-right: .5em;
+}
+
+button.ascending::before {
+  content: "\f150" !important;
+  font-family: "Font Awesome 6 Free";
+  margin-right: .5em;
+}
+
+.coin-table thead button::before {
+  content: "\f111";
+  font-family: "Font Awesome 6 Free";
+  margin-right: .5em;
+}
+
 #news button, button, .btn-link {
   border: 1px solid #3e3e3e;
   background-color: #1d1d20;

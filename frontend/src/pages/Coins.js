@@ -1,26 +1,102 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from 'react-router-dom'
+
+// https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
 const CoinList = ({ title }) => {
 
+  // states
   const [assets, setAssets] = useState([]);
 
+  // const assets = [
+  //   { rank: 1, name: 'Cheese', priceUsd: 4.9, changePercent24Hr: 20 },
+  //   { rank: 2, name: 'Milk', priceUsd: 1.9, changePercent24Hr: 32 },
+  //   { rank: 3, name: 'Yoghurt', priceUsd: 2.4, changePercent24Hr: 12 },
+  //   { rank: 4, name: 'Heavy Cream', priceUsd: 3.9, changePercent24Hr: 9 },
+  //   { rank: 5, name: 'Butter', priceUsd: 0.9, changePercent24Hr: 99 },
+  //   { rank: 6, name: 'Sour Cream ', priceUsd: 2.9, changePercent24Hr: 86 },
+  //   { rank: 7, name: 'Fancy French Cheese 🇫🇷', priceUsd: 99, changePercent24Hr: 12 },
+  // ]
+  const [sortConfig, setSortConfig] = useState(null);
+
+  // fetch
   const fetchTopCoins = async () => {
     const response = await fetch("/api/assets");
     const json = await response.json();
 
     if (response.ok) {
-      setAssets(json.data.slice(0, 30));
+      setAssets(json.data);
     }
   };
 
+  // useEffect
   useEffect(() => {
     document.title = title || "CryptoView"
     fetchTopCoins();
   }, []);
 
+  // useMemo
+  const sortedAssets = useMemo(() => {
+    let sortableAssets = [...assets];
+
+    // find ways to improve this
+    sortableAssets = sortableAssets.map(asset => {
+      if (asset.priceUsd) {
+        return { ...asset, priceUsd: Number(asset.priceUsd) };
+      }
+      return sortableAssets
+    })
+    sortableAssets = sortableAssets.map(asset => {
+      if (asset.changePercent24Hr) {
+        return { ...asset, changePercent24Hr: Number(asset.changePercent24Hr) };
+      }
+      return sortableAssets
+    })
+    sortableAssets = sortableAssets.map(asset => {
+      if (asset.marketCapUsd) {
+        return { ...asset, marketCapUsd: Number(asset.marketCapUsd) };
+      }
+      return sortableAssets
+    })
+
+
+    if (sortConfig !== null) {
+      sortableAssets.sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortableAssets;
+  }, [assets, sortConfig]);
+
+
+  // others
   let format_compact = Intl.NumberFormat("en", { notation: "compact" });
   let format_asset = Intl.NumberFormat("en", { maximumSignificantDigits: 7 });
+
+  const requestSort = (key) => {
+    let direction = 'ascending';
+    if (
+      sortConfig &&
+      sortConfig.key === key &&
+      sortConfig.direction === 'ascending'
+    ) {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const getClassNamesFor = (name) => {
+    if (!sortConfig) {
+      return;
+    }
+    return sortConfig.key === name ? sortConfig.direction : undefined;
+  };
 
   return (
     <div id="assets">
@@ -28,7 +104,7 @@ const CoinList = ({ title }) => {
       <div className="container">
         <h1>Crypto Market Capitalization</h1>
         <hr />
-        <p className="right">Last update: {new Date().toLocaleTimeString()}</p>
+        <p className="right"><strong>Last update:</strong> {new Date().toLocaleTimeString()} <br /> <strong>UTC</strong>: {new Date().toUTCString()}</p>
         <br />
 
         <table className="coin-table">
@@ -36,11 +112,24 @@ const CoinList = ({ title }) => {
             <tr>
               <td>Rank</td>
               <td>Name</td>
-              <td>Price (USD)</td>
+              <td>
+                <button type="button" className={getClassNamesFor('priceUsd')} onClick={() => requestSort('priceUsd')}>
+                  Price (USD)
+                </button>
+              </td>
               <td>Supply</td>
               <td>Max. Supply</td>
-              <td>Market Cap</td>
-              <td>Change 24h</td>
+              <td>
+                <button type="button" className={getClassNamesFor('marketCapUsd')} onClick={() => requestSort('marketCapUsd')}>
+                  Market Cap
+                </button>
+              </td>
+
+              <td>
+                <button type="button" className={getClassNamesFor('changePercent24Hr')} onClick={() => requestSort('changePercent24Hr')}>
+                  Change 24h
+                </button>
+              </td>
             </tr>
           </thead>
 
@@ -52,8 +141,8 @@ const CoinList = ({ title }) => {
                 </td>
               </tr>
             ) : (
-              assets.map((asset) => (
-                <tr key={asset.id}>
+              sortedAssets.map((asset, index) => (
+                <tr key={index}>
                   <td className="center">{asset.rank}</td>
                   <td>
                     <img
