@@ -260,7 +260,7 @@ code {
   align-items: center;
 }
 
-.highlightedItem{
+.highlightedItem {
   background-color: var(--badge-color) !important;
 }
 
@@ -288,6 +288,22 @@ code {
   text-align: right;
 }
 
+.boxstyle {
+  border: 1px solid #3e3e3e;
+  border-radius: 5px;
+  background-color: #27272b;
+  padding: 1em;
+  width: 100%;
+  justify-items: center;
+
+}
+
+#othercoins {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  gap: 1em;
+}
 
 .boxed {
   line-height: 1.5em;
@@ -663,3 +679,15 @@ button:hover, #news button:hover, #news button.active, .btn-link:hover {
   min-height: 60vh;
   box-shadow: 0 0 100px 30px tomato;
 } */
+
+#asset {
+  display: grid;
+  grid-gap: 1em;
+}
+
+.plotly-notifier div {
+  background-color: slateblue !important;
+  border-color: transparent !important;
+  border-radius: 5px;
+  color: white !important;
+}

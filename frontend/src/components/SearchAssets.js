@@ -66,17 +66,13 @@ const SearchAssets = () => {
                 listboxIsImmutable={true}
                 matchText={true}
                 maxItems={maxItems}
-                autoFocus={true}
                 name="assets"
                 noItemsMessage="We didn't found, please try again..."
                 placeholder="search a coin..."
                 typeahead={true}
                 Item={Item}
                 onSelect={handleToAsset}
-            // ref={turnstoneRef}
             />
-            {/* <button onClick={handleQuery}><i className="fa-solid fa-magnifying-glass"></i></button>
-            <button onClick={handleClear}><i className="fa-regular fa-circle-xmark"></i></button> */}
         </div>
     );
 }
