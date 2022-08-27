@@ -260,7 +260,7 @@ code {
   align-items: center;
 }
 
-.highlightedItem {
+#searchbar-listbox div[aria-selected="true"] {
   background-color: var(--badge-color) !important;
 }
 

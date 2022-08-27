@@ -7,16 +7,6 @@ const CoinList = ({ title }) => {
 
   // states
   const [assets, setAssets] = useState([]);
-
-  // const assets = [
-  //   { rank: 1, name: 'Cheese', priceUsd: 4.9, changePercent24Hr: 20 },
-  //   { rank: 2, name: 'Milk', priceUsd: 1.9, changePercent24Hr: 32 },
-  //   { rank: 3, name: 'Yoghurt', priceUsd: 2.4, changePercent24Hr: 12 },
-  //   { rank: 4, name: 'Heavy Cream', priceUsd: 3.9, changePercent24Hr: 9 },
-  //   { rank: 5, name: 'Butter', priceUsd: 0.9, changePercent24Hr: 99 },
-  //   { rank: 6, name: 'Sour Cream ', priceUsd: 2.9, changePercent24Hr: 86 },
-  //   { rank: 7, name: 'Fancy French Cheese 🇫🇷', priceUsd: 99, changePercent24Hr: 12 },
-  // ]
   const [sortConfig, setSortConfig] = useState(null);
 
   // fetch
