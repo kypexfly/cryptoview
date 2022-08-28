@@ -22,8 +22,18 @@
   "homepage": "https://github.com/kypexfly/coinmarketcap_react_node#readme",
   "dependencies": {
     "axios": "^0.27.2",
-    "concurrently": "^7.3.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.23.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1",
     "express": "^4.18.1",
-    "nodemon": "^2.0.19"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.3",
+    "nodemon": "^2.0.19",
+    "npm": "^8.18.0",
+    "validator": "^13.7.0"
   }
 }
