@@ -74,8 +74,10 @@ const Chart = () => {
           useResizeHandler={true}
           style={{ width: '100%', height: '325px' }}
           config={{
-            responsive: true
-          }} />)
+            responsive: true,
+            displaylogo: false
+          }}
+          />)
       }
     </div>
   )
