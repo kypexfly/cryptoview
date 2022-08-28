@@ -28,7 +28,7 @@ const SearchAssets = () => {
       ratio: 1,
       displayField: 'id',
       data: (query) =>
-        fetch(`/api/assets/?search=${encodeURIComponent(query)}&limit=${maxItems}`)
+        fetch(`/api/assets/get?search=${encodeURIComponent(query)}&limit=${maxItems}`)
           .then(response => response.json())
           .then(json => json.data),
       searchType: 'startswith'
