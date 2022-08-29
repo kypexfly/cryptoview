@@ -84,6 +84,7 @@ code {
   margin: 0 auto;
   max-width: 1360px;
   display: flex;
+  flex-wrap: wrap;
   padding: 0.5em 0;
   justify-content: space-between;
 }
@@ -344,6 +345,7 @@ form label {
   line-height: 1.2em;
   padding: 0.5em;
   min-height: 100px;
+  flex-wrap: wrap;
   /* overflow: scroll; */
 }
 
@@ -409,11 +411,12 @@ hr {
 }
 
 .feed-datetime {
-  margin: 0 1em;
   align-self: center;
   font-size: 11px;
-  min-width: 85px;
   color: gray;
+  box-sizing: border-box ;
+  flex-basis: 85px;
+  padding-right: .5em;
 }
 
 .feed-title-kind, .badge {
@@ -484,6 +487,37 @@ hr {
 
 }
 
+@media (max-width: 400px) {
+  #logo, .nav {
+    flex: 100%;
+    text-align: center;
+  }
+
+  #logo a {
+    justify-content: center;
+  }
+
+  #logo {
+    border-right: none;
+    padding: 0;
+    margin-right: 0;
+  }
+
+  .nav {
+    flex: 100% 1;
+    text-align: center;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+  }
+  .feed-row {
+    flex-wrap: wrap;
+  }
+  .feed-datetime, .feed-title {
+    flex: 100%;
+  }
+}
+
 button {
   cursor: pointer;
 }
@@ -506,7 +540,7 @@ button.ascending::before {
   margin-right: .5em;
 }
 
-#signup-form .btn-link, #login-form .btn-link{
+#signup-form .btn-link, #login-form .btn-link {
   max-width: 150px;
   margin: 2em 0;
 }
@@ -691,17 +725,18 @@ button:disabled, button[disabled] {
 }
 
 .landing h1 {
-  font-size: 50px;
+  font-size: 2rem;
   text-shadow: 0 0 15px rgba(255, 255, 255, .5);
 }
 
 .landbox {
   background-color: rgba(39, 39, 43, .5);
   padding: 2em;
-  margin: 1em;
+  /* margin: 1em; */
   border-radius: 5px;
   line-height: 4em;
   max-width: 600px;
+  /* word-break: break-all; */
 }
 
 .landbox .btn-link {

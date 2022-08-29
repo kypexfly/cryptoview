@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 // components
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import { useAuthContext } from './hooks/useAuthContext'
 // pages
 import Home from './pages/Home'
 import Asset from './pages/Asset'
@@ -13,6 +12,7 @@ import Converter from './pages/Converter'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 import UserProfile from './pages/UserProfile'
+import { useAuthContext } from './hooks/useAuthContext'
 
 // eslint-disable-next-line space-before-function-paren
 function App() {

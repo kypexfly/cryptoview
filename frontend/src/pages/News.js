@@ -4,10 +4,10 @@ import { useAuthContext } from '../hooks/useAuthContext'
 const { useEffect, useState } = require('react')
 
 const News = () => {
+  const { user } = useAuthContext()
   const [news, setNews] = useState([])
   const [langs, setLangs] = useState('')
   const [numpage, setNumpage] = useState(1)
-  const { user } = useAuthContext()
 
   const handleLang = async () => {
     const lang_param = [eng.lang, spa.lang, por.lang, fra.lang, rus.lang].filter(Boolean).join(',')

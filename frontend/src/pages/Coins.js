@@ -1,12 +1,13 @@
 import { useEffect, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
+import useSortableData from '../hooks/useSortableData'
 
 // https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
 const CoinList = () => {
   // states
   const [assets, setAssets] = useState([])
-  const [sortConfig, setSortConfig] = useState(null)
+  // const [sortConfig, setSortConfig] = useState(null)
 
   // fetch
   const fetchTopCoins = async () => {
@@ -24,59 +25,11 @@ const CoinList = () => {
     fetchTopCoins()
   }, [])
 
-  // useMemo
-  const sortedAssets = useMemo(() => {
-    let sortableAssets = [...assets]
-
-    // find ways to improve this
-    sortableAssets = sortableAssets.map((asset) => {
-      if (asset.priceUsd) {
-        return { ...asset, priceUsd: Number(asset.priceUsd) }
-      }
-      return sortableAssets
-    })
-    sortableAssets = sortableAssets.map((asset) => {
-      if (asset.changePercent24Hr) {
-        return { ...asset, changePercent24Hr: Number(asset.changePercent24Hr) }
-      }
-      return sortableAssets
-    })
-    sortableAssets = sortableAssets.map((asset) => {
-      if (asset.marketCapUsd) {
-        return { ...asset, marketCapUsd: Number(asset.marketCapUsd) }
-      }
-      return sortableAssets
-    })
-
-    if (sortConfig !== null) {
-      sortableAssets.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? -1 : 1
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? 1 : -1
-        }
-        return 0
-      })
-    }
-    return sortableAssets
-  }, [assets, sortConfig])
+  const { items, requestSort, sortConfig } = useSortableData(assets)
 
   // others
   const format_compact = Intl.NumberFormat('en', { notation: 'compact' })
   const format_asset = Intl.NumberFormat('en', { maximumSignificantDigits: 7 })
-
-  const requestSort = (key) => {
-    let direction = 'ascending'
-    if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === 'ascending'
-    ) {
-      direction = 'descending'
-    }
-    setSortConfig({ key, direction })
-  }
 
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
@@ -145,7 +98,7 @@ const CoinList = () => {
                   </div>
                 </td>
               </tr>)
-              : (sortedAssets.map((asset, index) => (
+              : (items.map((asset, index) => (
                 <tr key={index}>
                   <td className="center">{asset.rank}</td>
                   <td>
