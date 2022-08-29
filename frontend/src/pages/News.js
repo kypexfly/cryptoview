@@ -1,10 +1,13 @@
 import NewsList from '../components/NewsList'
+import { useAuthContext } from '../hooks/useAuthContext'
+
 const { useEffect, useState } = require('react')
 
 const News = () => {
   const [news, setNews] = useState([])
   const [langs, setLangs] = useState('')
   const [numpage, setNumpage] = useState(1)
+  const { user } = useAuthContext()
 
   const handleLang = async () => {
     const lang_param = [eng.lang, spa.lang, por.lang, fra.lang, rus.lang].filter(Boolean).join(',')
@@ -37,10 +40,15 @@ const News = () => {
   const rus = useHandleParams()
 
   const fetchNewsFeed = async (api_path = '/api/news') => {
-    fetch(api_path)
-      .then(res => res.json())
-      .then(news => setNews(news))
-      .catch(err => console.log(err))
+    const response = await fetch(api_path, {
+      headers: { Authorization: `Bearer ${user.token}` }
+    })
+
+    const json = await response.json()
+
+    if (response.ok) {
+      setNews(json)
+    }
   }
 
   const handleNext = async () => {

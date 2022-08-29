@@ -45,7 +45,7 @@ const Navbar = () => {
             </Link>
             <span>
               {user && (
-                <Link to='/logout' onClick={handleClick}>Logout</Link>
+                <Link to='/' onClick={handleClick}>Logout</Link>
               )}
               {!user && (
                 <>

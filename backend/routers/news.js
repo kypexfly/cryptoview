@@ -1,6 +1,9 @@
 const axios = require('axios')
 const express = require('express')
 const router = express.Router()
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
 
 router.get('/', (req, res) => {
   let api_url = 'https://cryptopanic.com/api/v1/posts/?auth_token=c696e7b458c6e01b7230f59a5047455f7774adfc&public=true'

@@ -29,8 +29,8 @@ function App() {
             <Route path="/news" element={user ? <News /> : <Navigate to='/login' />} />
             <Route path="/about" element={<About />} />
             <Route path="/converter" element={<Converter />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={!user ? <SignUp /> : <Navigate to='/' />} />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to='/' />} />
             <Route path="/users/:userid" element={<UserProfile />} />
           </Routes>
         </div>

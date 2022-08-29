@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Home = () => {
+  const { user } = useAuthContext()
+
   useEffect(() => {
     document.title = 'CryptoView'
   }, [])
@@ -13,12 +16,18 @@ const Home = () => {
           <div className="landbox">
             <h1>Welcome to CryptoView!</h1>
 
-            <p>Sign up to access some interesting features and more!</p>
+            {!user
+              ? (
+                <>
+                  <p>Sign up to access some interesting features and more!</p>
+                  <div className="landing-sign">
+                    <Link to="/signup" className="btn-link">Sign Up</Link>
+                    <Link to="/login" className="btn-link">Login</Link>
+                  </div>
+                </>)
+              : (<p>Hi {user.email}! <br /> Enjoy this app!</p>)
+            }
 
-            <div className="landing-sign">
-              <Link to="/signup" className="btn-link">Sign Up</Link>
-              <Link to="/login" className="btn-link">Login</Link>
-            </div>
           </div>
         </div>
       </section >
