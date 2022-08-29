@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLogin } from '../hooks/useLogin'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { login, isLoading, error } = useLogin()
+  const { login, error, isLoading } = useLogin()
+
+  useEffect(() => {
+    document.title = 'Login - CryptoView'
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -13,34 +17,37 @@ const Login = () => {
   }
 
   return (
-        <div className="container">
-            <div className="boxed">
-                <h1>Login</h1>
-                <hr />
+    <div className="container">
+      <div className="boxed">
+        <h1>Login</h1>
+        <hr />
 
-                <form id="signup-form">
-                    <label><i className="fa-solid fa-user"></i> Username</label>
-                    <input
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder="enter a username"
-                    autoComplete="off"
-                    type="text" />
+        <form id="signup-form" onSubmit={handleSubmit}>
+          <label><i className="fa-solid fa-user"></i> Email</label>
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            placeholder="enter an email"
+            autoComplete="off"
+            type="email" />
 
-                    <label><i className="fa-solid fa-key"></i> Password</label>
-                    <input
-                    onChange={e => setPassword(e.target.value)}
-                    placeholder="enter a strong password"
-                    autoComplete="off"
-                    type="password" />
+          <label><i className="fa-solid fa-key"></i> Password</label>
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            placeholder="enter a strong password"
+            autoComplete="off"
+            type="password" />
 
-                    <button type="button" className="btn-link" onClick={e => handleSubmit}>
-                        Login now
-                    </button>
-                </form>
+          <button disabled={isLoading} className="btn-link">
+            Login now
+          </button>
+          {error && <div className="error">{error}</div>}
+        </form>
 
-                <p>Not registered yet? <Link to="/signup">Sign up now</Link></p>
-            </div>
-        </div>
+        <p>Not registered yet? <Link to="/signup">Sign up now</Link></p>
+      </div>
+    </div>
   )
 }
 

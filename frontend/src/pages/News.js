@@ -1,7 +1,7 @@
 import NewsList from '../components/NewsList'
 const { useEffect, useState } = require('react')
 
-const News = ({ title }) => {
+const News = () => {
   const [news, setNews] = useState([])
   const [langs, setLangs] = useState('')
   const [numpage, setNumpage] = useState(1)
@@ -60,7 +60,7 @@ const News = ({ title }) => {
   }
 
   useEffect(() => {
-    document.title = title || 'CryptoView'
+    document.title = 'News - CryptoView'
     fetchNewsFeed()
   }, [])
 

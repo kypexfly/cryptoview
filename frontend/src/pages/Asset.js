@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
 // components
-import OtherCoins from '../components/OtherCoins'
+// import OtherCoins from '../components/OtherCoins'
 import Dashboard from '../components/Dashboard'
 
 const Asset = () => {
@@ -40,7 +40,7 @@ const Asset = () => {
 
         {!Object.keys(asset).length ? undefined : <Dashboard asset={asset} />}
 
-        <OtherCoins />
+        {/* <OtherCoins /> */}
       </div>
     </div>
   )

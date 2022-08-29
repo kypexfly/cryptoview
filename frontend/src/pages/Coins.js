@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 // https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
-const CoinList = ({ title }) => {
+const CoinList = () => {
   // states
   const [assets, setAssets] = useState([])
   const [sortConfig, setSortConfig] = useState(null)
@@ -20,7 +20,7 @@ const CoinList = ({ title }) => {
 
   // useEffect
   useEffect(() => {
-    document.title = title || 'CryptoView'
+    document.title = 'Assets - CryptoView'
     fetchTopCoins()
   }, [])
 
@@ -136,8 +136,7 @@ const CoinList = ({ title }) => {
 
           <tbody>
             {!assets.length
-              ? (
-              <tr className="coin-load">
+              ? (<tr className="coin-load">
                 <td colSpan="100%" className="center">
                   <div className="loading">
                     <span>
@@ -145,10 +144,8 @@ const CoinList = ({ title }) => {
                     </span>
                   </div>
                 </td>
-              </tr>
-                )
-              : (
-                  sortedAssets.map((asset, index) => (
+              </tr>)
+              : (sortedAssets.map((asset, index) => (
                 <tr key={index}>
                   <td className="center">{asset.rank}</td>
                   <td>
@@ -192,9 +189,7 @@ const CoinList = ({ title }) => {
                       .toLocaleString()}
                     %
                   </td>
-                </tr>
-                  ))
-                )}
+                </tr>)))}
           </tbody>
         </table>
       </div>

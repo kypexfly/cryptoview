@@ -1,9 +1,18 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useLogout } from '../hooks/useLogout'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 import ReactTooltip from 'react-tooltip'
 import SearchAssets from './SearchAssets'
 
 const Navbar = () => {
+  const { logout } = useLogout()
+  const { user } = useAuthContext()
+
+  const handleClick = () => {
+    logout()
+  }
+
   const useActiveNav = (loc) => {
     const location = useLocation()
     if (location.pathname === loc) {
@@ -35,12 +44,19 @@ const Navbar = () => {
               <i className="fa-solid fa-circle-info"></i>
             </Link>
             <span>
-              <Link to="/signup" data-tip="Sign Up" className={useActiveNav('/signup')}>
-                <i className="fa-solid fa-arrow-right-to-bracket"></i>
-              </Link>
-              <Link to="/login" data-tip="Login" className={useActiveNav('/login')}>
-                <i className="fa-solid fa-user"></i>
-              </Link>
+              {user && (
+                <Link to='/logout' onClick={handleClick}>Logout</Link>
+              )}
+              {!user && (
+                <>
+                  <Link to="/login" data-tip="Login" className={useActiveNav('/login')}>
+                    <i className="fa-solid fa-user"></i>
+                  </Link>
+                  <Link to="/signup" data-tip="Sign Up" className={useActiveNav('/signup')}>
+                    <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                  </Link>
+                </>
+              )}
             </span>
           </div>
         </div>

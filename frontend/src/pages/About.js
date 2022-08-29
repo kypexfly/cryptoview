@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 
-const About = ({ title }) => {
+const About = () => {
   useEffect(() => {
-    document.title = title || 'CryptoView'
+    document.title = 'About - CryptoView'
   }, [])
 
   return (

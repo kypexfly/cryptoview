@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 // components
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import { useAuthContext } from './hooks/useAuthContext'
 // pages
 import Home from './pages/Home'
 import Asset from './pages/Asset'
@@ -13,22 +14,24 @@ import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 import UserProfile from './pages/UserProfile'
 
-function App () {
+// eslint-disable-next-line space-before-function-paren
+function App() {
+  const { user } = useAuthContext()
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Home title="CryptoView" />} />
-            <Route path="/assets" element={<Coins title="Assets - CryptoView" />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/assets" element={<Coins />} />
             <Route path="/assets/:coinid" element={<Asset />} />
-            <Route path="/news" element={<News title="News - CryptoView" />} />
-            <Route path="/about" element={<About title="About - CryptoView" />} />
-            <Route path="/converter" element={<Converter title="Converter - CryptoView" />} />
-            <Route path="/signup" element={<SignUp title="Sign Up - CryptoView" />} />
-            <Route path="/login" element={<Login title="Login - CryptoView" />} />
-            <Route path="/users/:userid" element={<UserProfile title="User Profile - CryptoView" />} />
+            <Route path="/news" element={user ? <News /> : <Navigate to='/login' />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/converter" element={<Converter />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/users/:userid" element={<UserProfile />} />
           </Routes>
         </div>
 

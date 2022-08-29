@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const Converter = ({ title }) => {
+const Converter = () => {
   const [amount, setAmount] = useState(1)
   const [leftCoin, setLeftCoin] = useState('bitcoin')
   const [rightCoin, setRightCoin] = useState('united-states-dollar')
@@ -24,7 +24,7 @@ const Converter = ({ title }) => {
   }
 
   useEffect(() => {
-    document.title = title || 'CryptoView'
+    document.title = 'Converter - CryptoView'
 
     fetchAssetRates(leftCoin, rightCoin)
   }, [leftCoin, rightCoin])
