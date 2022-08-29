@@ -506,6 +506,11 @@ button.ascending::before {
   margin-right: .5em;
 }
 
+#signup-form .btn-link, #login-form .btn-link{
+  max-width: 150px;
+  margin: 2em 0;
+}
+
 #news button, button, .btn-link {
   border: 1px solid #3e3e3e;
   background-color: #1d1d20;
@@ -562,6 +567,10 @@ button:disabled, button[disabled] {
 .sticky {
   position: sticky;
   top: 0;
+}
+
+.error {
+  color: var(--price-red);
 }
 
 .loading {

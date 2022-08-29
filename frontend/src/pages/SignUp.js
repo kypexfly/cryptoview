@@ -39,10 +39,12 @@ const SignUp = () => {
             autoComplete="off"
             type="password" />
 
-          <button disabled={isLoading} className="btn-link">
-            Register now
-          </button>
-          {error && <div className="error">{error}</div>}
+          <div className="center">
+            <button disabled={isLoading} className="btn-link">
+              Sign up
+            </button>
+            {error && <div className="error">{error}</div>}
+          </div>
         </form>
 
         <p>Already have an account? <Link to="/login">Login now</Link></p>
