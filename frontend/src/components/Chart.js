@@ -42,7 +42,7 @@ const Chart = () => {
                 font: { color: '#FFF', size: 15 }
               },
               marker: { color: 'slateblue' },
-              hovertemplate: '<b>$%{y:.2f}</b> <br>' +
+              hovertemplate: '<b>$%{y}</b> <br>' +
                 '<span>%{x}<extra></extra>'
             }
           ]}
@@ -77,7 +77,7 @@ const Chart = () => {
             responsive: true,
             displaylogo: false
           }}
-          />)
+        />)
       }
     </div>
   )

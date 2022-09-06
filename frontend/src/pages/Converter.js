@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { formatCurrency } from '@coingecko/cryptoformat'
 
 const Converter = () => {
   const [amount, setAmount] = useState(1)
@@ -71,10 +72,10 @@ const Converter = () => {
 
             <div className="conversion-result">
               <p style={{ fontSize: '20px' }}>
-                <strong>{format_asset.format(amount)}</strong> {leftPrice.symbol} = <strong>
+                <strong>{format_asset.format(amount, 'USD', 'en', true)}</strong> {leftPrice.symbol} = <strong>
                   {!rightPrice.rateUsd
                     ? (<i className="fas fa-sync fa-spin"></i>)
-                    : (format_asset.format(amount * leftPrice.rateUsd / rightPrice.rateUsd))}
+                    : (formatCurrency(amount * leftPrice.rateUsd / rightPrice.rateUsd, 'USD', 'en', true))}
                 </strong> {rightPrice.symbol}
               </p>
             </div>

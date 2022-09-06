@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import useSortableData from '../hooks/useSortableData'
+import { formatCurrency } from '@coingecko/cryptoformat'
 
 // https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
@@ -63,18 +64,6 @@ const CoinList = () => {
                     Price (USD)
                   </button>
                 </td>
-                <td>Supply</td>
-                <td>Max. Supply</td>
-                <td>
-                  <button
-                    type="button"
-                    className={getClassNamesFor('marketCapUsd')}
-                    onClick={() => requestSort('marketCapUsd')}
-                  >
-                    Market Cap
-                  </button>
-                </td>
-
                 <td>
                   <button
                     type="button"
@@ -84,6 +73,17 @@ const CoinList = () => {
                     Change 24h
                   </button>
                 </td>
+                <td>
+                  <button
+                    type="button"
+                    className={getClassNamesFor('marketCapUsd')}
+                    onClick={() => requestSort('marketCapUsd')}
+                  >
+                    Market Cap
+                  </button>
+                </td>
+                <td>Supply</td>
+                <td>Max. Supply</td>
               </tr>
             </thead>
 
@@ -119,17 +119,7 @@ const CoinList = () => {
                         </Link>
                       </div>
                     </td>
-                    <td>${format_asset.format(asset.priceUsd)}</td>
-                    <td>{Number(asset.supply).toLocaleString()}</td>
-                    <td>
-                      {asset.maxSupply > 0
-                        ? Number(asset.maxSupply).toLocaleString()
-                        : '-'}
-                    </td>
-                    <td className="center">
-                      $
-                      {format_compact.format(asset.marketCapUsd).toLocaleString()}
-                    </td>
+                    <td>{formatCurrency(asset.priceUsd, 'USD', 'en')}</td>
                     <td
                       className={
                         asset.changePercent24Hr > 0
@@ -141,6 +131,16 @@ const CoinList = () => {
                         .toFixed(2)
                         .toLocaleString()}
                       %
+                    </td>
+                    <td className="center">
+                      $
+                      {format_compact.format(asset.marketCapUsd).toLocaleString()}
+                    </td>
+                    <td>{Number(asset.supply).toLocaleString()}</td>
+                    <td>
+                      {asset.maxSupply > 0
+                        ? Number(asset.maxSupply).toLocaleString()
+                        : '-'}
                     </td>
                   </tr>)))}
             </tbody>
