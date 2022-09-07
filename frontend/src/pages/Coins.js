@@ -31,7 +31,8 @@ const CoinList = () => {
       field: 'rank',
       headerName: 'Rank',
       width: 65,
-      sortable: false
+      sortable: false,
+      align: 'center'
     },
     {
       field: 'name',
