@@ -26,7 +26,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/assets" element={<Coins />} />
             <Route path="/assets/:coinid" element={<Asset />} />
-            <Route path="/news" element={user ? <News /> : <Navigate to='/login' />} />
+            <Route path="/news" element={<News />} />
             <Route path="/about" element={<About />} />
             <Route path="/converter" element={<Converter />} />
             <Route path="/signup" element={!user ? <SignUp /> : <Navigate to='/' />} />

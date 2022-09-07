@@ -25,7 +25,7 @@ const Home = () => {
                     <Link to="/login" className="btn-link">Login</Link>
                   </div>
                 </>)
-              : (<p>Hi {user.email}! <br /> Enjoy this app!</p>)
+              : (<><p>Logged as: <strong>{user.email}</strong>!</p><p>Enjoy this app!</p></>)
             }
 
           </div>

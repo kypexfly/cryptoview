@@ -1,8 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useLogout } from '../hooks/useLogout'
 
-import ReactTooltip from 'react-tooltip'
 import SearchAssets from './SearchAssets'
 
 const Navbar = () => {
@@ -31,37 +30,38 @@ const Navbar = () => {
           <SearchAssets />
 
           <div className="nav">
-            <Link to="/assets" data-tip="Assets" className={useActiveNav('/assets')}>
+            <Link to="/assets" className={useActiveNav('/assets')}>
               <i className="fa-solid fa-ranking-star"></i>
             </Link>
-            <Link to="/news" data-tip="News" className={useActiveNav('/news')}>
+            <Link to="/news" className={useActiveNav('/news')}>
               <i className="fa-solid fa-newspaper"></i>
             </Link>
-            <Link to="/converter" data-tip="Converter" className={useActiveNav('/converter')}>
+            <Link to="/converter" className={useActiveNav('/converter')}>
               <i className="fa-solid fa-calculator"></i>
             </Link>
-            <Link to="/about" data-tip="About" className={useActiveNav('/about')}>
+            <Link to="/about" className={useActiveNav('/about')}>
               <i className="fa-solid fa-circle-info"></i>
             </Link>
-            <span>
+            <>
               {user && (
                 <Link to='/' onClick={handleClick}>Logout</Link>
               )}
               {!user && (
                 <>
-                  <Link to="/login" data-tip="Login" className={useActiveNav('/login')}>
-                    <i className="fa-solid fa-user"></i>
+                  <Link to="/login" className={useActiveNav('/login')}>
+                    Login
+                    {/* <i className="fa-solid fa-user"></i> */}
                   </Link>
-                  <Link to="/signup" data-tip="Sign Up" className={useActiveNav('/signup')}>
-                    <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                  <Link to="/signup" className={useActiveNav('/signup')}>
+                    Sign Up
+                    {/* <i className="fa-solid fa-arrow-right-to-bracket"></i> */}
                   </Link>
                 </>
               )}
-            </span>
+            </>
           </div>
         </div>
       </div>
-      <ReactTooltip />
     </header>
   )
 }

@@ -1,14 +1,11 @@
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
+import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
-import useSortableData from '../hooks/useSortableData'
 import { formatCurrency } from '@coingecko/cryptoformat'
-
-// https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
 const CoinList = () => {
   // states
   const [assets, setAssets] = useState([])
-  // const [sortConfig, setSortConfig] = useState(null)
 
   // fetch
   const fetchTopCoins = async () => {
@@ -26,18 +23,76 @@ const CoinList = () => {
     fetchTopCoins()
   }, [])
 
-  const { items, requestSort, sortConfig } = useSortableData(assets)
-
   // others
-  const format_compact = Intl.NumberFormat('en', { notation: 'compact' })
-  const format_asset = Intl.NumberFormat('en', { maximumSignificantDigits: 7 })
+  const formatCompact = Intl.NumberFormat('en', { notation: 'compact' })
 
-  const getClassNamesFor = (name) => {
-    if (!sortConfig) {
-      return
+  const columns = [
+    {
+      field: 'rank',
+      headerName: 'Rank',
+      width: 65,
+      sortable: false
+    },
+    {
+      field: 'name',
+      headerName: 'Coin',
+      minWidth: 200,
+      flex: 1,
+      renderCell: (params) => (
+        <>
+          <img
+            className="asset-icon"
+            loading="lazy"
+            src={`https://assets.coincap.io/assets/icons/${String(params.row.symbol).toLowerCase()}@2x.png`}
+            alt={params.row.symbol}
+          />
+          <div>
+            <Link to={`/assets/${params.row.id}`}>
+              <strong>{params.row.name}</strong>
+              <p>
+                <small className="text-gray">{params.row.symbol}</small>
+              </p>
+            </Link>
+          </div>
+        </>
+      )
+    },
+    {
+      field: 'priceUsd',
+      headerName: 'Price',
+      minWidth: 100,
+      flex: 1,
+      renderCell: (params) => (formatCurrency(params.value, 'USD', 'en'))
+    },
+    {
+      field: 'changePercent24Hr',
+      headerName: 'Change 24h',
+      flex: 1,
+      renderCell: (params) => (
+        <span className={(params.value > 0 ? 'green' : 'red')}>
+          {Number(params.value).toFixed(2)}%
+        </span>
+      )
+    },
+    {
+      field: 'marketCapUsd',
+      headerName: 'Market Cap',
+      flex: 1,
+      renderCell: (params) => (`$${formatCompact.format(params.value)}`)
+    },
+    {
+      field: 'supply',
+      headerName: 'Supply',
+      flex: 1,
+      renderCell: (params) => formatCurrency(Number(params.value), '', 'en')
+    },
+    {
+      field: 'maxSupply',
+      headerName: 'Max. Supply',
+      flex: 1,
+      renderCell: (params) => params.value > 0 ? formatCurrency(Number(params.value), '', 'en') : '-'
     }
-    return sortConfig.key === name ? sortConfig.direction : undefined
-  }
+  ]
 
   return (
     <div id="assets">
@@ -46,106 +101,61 @@ const CoinList = () => {
         <hr />
         <p className="right">
           <strong>Last update:</strong> {new Date().toLocaleTimeString()} <br />{' '}
-          <strong>UTC</strong>: {new Date().toUTCString()}
         </p>
         <br />
-        <div className="table-wrap">
-          <table className="coin-table">
-            <thead>
-              <tr>
-                <td>Rank</td>
-                <td>Name</td>
-                <td>
-                  <button
-                    type="button"
-                    className={getClassNamesFor('priceUsd')}
-                    onClick={() => requestSort('priceUsd')}
-                  >
-                    Price (USD)
-                  </button>
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    className={getClassNamesFor('changePercent24Hr')}
-                    onClick={() => requestSort('changePercent24Hr')}
-                  >
-                    Change 24h
-                  </button>
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    className={getClassNamesFor('marketCapUsd')}
-                    onClick={() => requestSort('marketCapUsd')}
-                  >
-                    Market Cap
-                  </button>
-                </td>
-                <td>Supply</td>
-                <td>Max. Supply</td>
-              </tr>
-            </thead>
-
-            <tbody>
-              {!assets.length
-                ? (<tr className="coin-load">
-                  <td colSpan="100%" className="center">
-                    <div className="loading">
-                      <span>
-                        <i className="fas fa-sync fa-spin"></i> Loading...
-                      </span>
-                    </div>
-                  </td>
-                </tr>)
-                : (items.map((asset, index) => (
-                  <tr key={index}>
-                    <td className="center">{asset.rank}</td>
-                    <td>
-                      <img
-                        className="asset-icon"
-                        loading="lazy"
-                        src={`https://assets.coincap.io/assets/icons/${String(
-                          asset.symbol
-                        ).toLowerCase()}@2x.png`}
-                        alt={asset.symbol}
-                      />
-                      <div>
-                        <Link to={`/assets/${asset.id}`}>
-                          <strong>{asset.name}</strong>
-                          <p>
-                            <small className="text-gray">{asset.symbol}</small>
-                          </p>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>{formatCurrency(asset.priceUsd, 'USD', 'en')}</td>
-                    <td
-                      className={
-                        asset.changePercent24Hr > 0
-                          ? 'green center'
-                          : 'red center'
-                      }
-                    >
-                      {Number(asset.changePercent24Hr)
-                        .toFixed(2)
-                        .toLocaleString()}
-                      %
-                    </td>
-                    <td className="center">
-                      $
-                      {format_compact.format(asset.marketCapUsd).toLocaleString()}
-                    </td>
-                    <td>{Number(asset.supply).toLocaleString()}</td>
-                    <td>
-                      {asset.maxSupply > 0
-                        ? Number(asset.maxSupply).toLocaleString()
-                        : '-'}
-                    </td>
-                  </tr>)))}
-            </tbody>
-          </table>
-        </div>
+        <DataGrid
+          rows={assets}
+          columns={columns}
+          pageSize={25}
+          sx={{
+            borderColor: '#3e3e3e',
+            bgcolor: '#27272b',
+            color: '#ffffffde',
+            borderBlockColor: '#3e3e3e',
+            borderBlockTopColor: '#3e3e3e',
+            fontFamily: 'Rubik',
+            fontSize: '1em',
+            '& .MuiDataGrid-row:hover': {
+              bgcolor: 'rgba(0,0,0,.2)'
+            },
+            '& .MuiDataGrid-cell': {
+              borderBottomColor: '#3e3e3e',
+              padding: '1em'
+            },
+            '& .MuiDataGrid-cell:focus': {
+              outlineColor: 'transparent'
+            },
+            '& .MuiDataGrid-columnSeparator': {
+              color: '#3e3e3e'
+            },
+            '& .MuiDataGrid-columnHeaders': {
+              border: 'none'
+            },
+            '& .MuiDataGrid-columnHeader': {
+              textAlign: 'center'
+            },
+            '& .MuiDataGrid-columnHeaderTitle': {
+              fontWeight: 'bold'
+            },
+            '& .MuiDataGrid-columnHeader:focus': {
+              outlineColor: 'transparent'
+            },
+            '& .MuiDataGrid-sortIcon': {
+              color: 'white'
+            },
+            '& .MuiDataGrid-footerContainer': {
+              borderColor: '#3e3e3e'
+            },
+            '& .MuiTablePagination-toolbar': {
+              color: '#ffffffde'
+            }
+          }}
+          autoHeight
+          rowHeight={Number(65)}
+          disableSelectionOnClick
+          disableColumnSelector
+          disableColumnMenu
+        />
       </div>
     </div>
   )

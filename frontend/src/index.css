@@ -132,7 +132,6 @@ code {
   padding: .5em .5em;
   color: gray;
   transition: 0.1s ease;
-  border-bottom: 2px solid darkgray;
 }
 
 .nav a:hover {
@@ -141,7 +140,7 @@ code {
 }
 
 .nav a.active {
-  color: white;
+  color: lime;
   border-bottom: 2px solid;
 }
 
@@ -176,12 +175,14 @@ code {
   border-bottom: 1px solid #3e3e3e;
 }
 
+.coin-table tbody tr td:nth-child(2) {
+  min-width: 180px;
+}
+
 .coin-table tbody tr:last-child td,
 .feed-list .feed-row:last-child {
   border-bottom: none;
 }
-
-
 
 .coin-table thead {
   font-weight: bold;
@@ -197,7 +198,7 @@ code {
 }
 
 .coin-table td {
-  padding: 0.75em;
+  padding: 0.5em;
 }
 
 
@@ -386,8 +387,6 @@ select {
   position: relative;
 }
 
-
-
 #footer {
   position: absolute;
   width: 100%;
@@ -420,7 +419,7 @@ hr {
   align-self: center;
   font-size: 11px;
   color: gray;
-  box-sizing: border-box ;
+  box-sizing: border-box;
   flex-basis: 85px;
   padding-right: .5em;
 }
@@ -474,19 +473,13 @@ hr {
     grid-template-columns: 1fr !important;
   }
 
-  .coin-table td:nth-child(1),
-  .coin-table td:nth-child(4),
-  .coin-table td:nth-child(5) {
-    display: none
-  }
-
   .boxed {
     min-width: 100%;
     box-sizing: border-box;
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   #searchbar {
     display: none;
   }
@@ -516,9 +509,15 @@ hr {
     display: flex;
     align-items: center;
   }
+
+  .nav a {
+    flex: 1;
+  }
+
   .feed-row {
     flex-wrap: wrap;
   }
+
   .feed-datetime, .feed-title {
     flex: 100%;
   }
@@ -682,7 +681,7 @@ button:disabled, button[disabled] {
 }
 
 .dash-details-price {
-  text-align: left;
+  text-align: right;
   margin: 2em 0;
 }
 
@@ -711,12 +710,11 @@ button:disabled, button[disabled] {
   height: 95vh;
   background-attachment: fixed;
   /* background: linear-gradient(0deg, rgb(255, 48, 0) 0%, rgba(255, 12, 0, 0.4) 40%, rgba(0, 0, 0, 0) 70%); */
-  background: linear-gradient(0deg, slateblue 0, rgba(0, 0, 0, 0) 70%)
-  , url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgAgMAAADm7QMnAAAADFBMVEV3d3dOTk5OTk5OTk60BIz+AAAABHRSTlP/bytS3QghxwAAAEhJREFUeAFjZA1gQAevGVc5XPjy9z8K8Ytowd/YBf8zYIB/xGsfyhaNWjRq0ahFoxaNWkS4QhmtjwaDRaMWjVo0atGoRaP1EQDs2xO3GiLLhAAAAABJRU5ErkJggg==) fixed;
+  background: linear-gradient(0deg, slateblue 0, rgba(0, 0, 0, 0) 70%), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgAgMAAADm7QMnAAAADFBMVEV3d3dOTk5OTk5OTk60BIz+AAAABHRSTlP/bytS3QghxwAAAEhJREFUeAFjZA1gQAevGVc5XPjy9z8K8Ytowd/YBf8zYIB/xGsfyhaNWjRq0ahFoxaNWkS4QhmtjwaDRaMWjVo0atGoRaP1EQDs2xO3GiLLhAAAAABJRU5ErkJggg==) fixed;
   /* background: linear-gradient(0deg, rgba(0, 255, 0, .7) -10%, rgba(0, 255, 0, 0.4) 40%, rgba(0, 0, 0, 0) 70%), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgAgMAAADm7QMnAAAADFBMVEV3d3dOTk5OTk5OTk60BIz+AAAABHRSTlP/bytS3QghxwAAAEhJREFUeAFjZA1gQAevGVc5XPjy9z8K8Ytowd/YBf8zYIB/xGsfyhaNWjRq0ahFoxaNWkS4QhmtjwaDRaMWjVo0atGoRaP1EQDs2xO3GiLLhAAAAABJRU5ErkJggg==) 0; */
   /* background: linear-gradient(0deg, rgba(255, 69, 0, .7) -10%, rgba(255, 69, 0, 0.4) 40%, rgba(0, 0, 0, 0) 70%), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgAgMAAADm7QMnAAAADFBMVEV3d3dOTk5OTk5OTk60BIz+AAAABHRSTlP/bytS3QghxwAAAEhJREFUeAFjZA1gQAevGVc5XPjy9z8K8Ytowd/YBf8zYIB/xGsfyhaNWjRq0ahFoxaNWkS4QhmtjwaDRaMWjVo0atGoRaP1EQDs2xO3GiLLhAAAAABJRU5ErkJggg==) 0; */
   /* background: linear-gradient(0deg, rgba(0, 255, 0, .7) 15%, rgba(0, 255, 0, 0.2) 60%, rgba(0, 0, 0, .2) 100%), */
-    /* url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgAgMAAADm7QMnAAAADFBMVEV3d3dOTk5OTk5OTk60BIz+AAAABHRSTlP/bytS3QghxwAAAEhJREFUeAFjZA1gQAevGVc5XPjy9z8K8Ytowd/YBf8zYIB/xGsfyhaNWjRq0ahFoxaNWkS4QhmtjwaDRaMWjVo0atGoRaP1EQDs2xO3GiLLhAAAAABJRU5ErkJggg==) fixed; */
+  /* url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgAgMAAADm7QMnAAAADFBMVEV3d3dOTk5OTk5OTk60BIz+AAAABHRSTlP/bytS3QghxwAAAEhJREFUeAFjZA1gQAevGVc5XPjy9z8K8Ytowd/YBf8zYIB/xGsfyhaNWjRq0ahFoxaNWkS4QhmtjwaDRaMWjVo0atGoRaP1EQDs2xO3GiLLhAAAAABJRU5ErkJggg==) fixed; */
 }
 
 .landing-sign button {
@@ -742,11 +740,11 @@ button:disabled, button[disabled] {
 .landbox {
   background-color: rgba(39, 39, 43, .5);
   padding: 2em;
-  /* margin: 1em; */
-  border-radius: 5px;
-  line-height: 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
   max-width: 600px;
-  /* word-break: break-all; */
+  word-break: break-all;
 }
 
 .landbox .btn-link {

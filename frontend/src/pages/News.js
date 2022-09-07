@@ -4,7 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 const { useEffect, useState } = require('react')
 
 const News = () => {
-  const { user } = useAuthContext()
+  // const { user } = useAuthContext()
   const [news, setNews] = useState([])
   const [langs, setLangs] = useState('')
   const [numpage, setNumpage] = useState(1)
@@ -40,9 +40,7 @@ const News = () => {
   const rus = useHandleParams()
 
   const fetchNewsFeed = async (api_path = '/api/news') => {
-    const response = await fetch(api_path, {
-      headers: { Authorization: `Bearer ${user.token}` }
-    })
+    const response = await fetch(api_path)
 
     const json = await response.json()
 
