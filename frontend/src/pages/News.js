@@ -1,10 +1,8 @@
+import { useEffect } from 'react'
 import NewsList from '../components/NewsList'
-import { useAuthContext } from '../hooks/useAuthContext'
-import { useEffect, useState } from 'react'
 import { useNewsFeed } from '../hooks/useNewsFeed'
 
 const News = () => {
-  // const { user } = useAuthContext()
   const { news, langs, numpage, handlePrev, handleNext, handleLang, handleLangSelect } = useNewsFeed()
 
   useEffect(() => {
