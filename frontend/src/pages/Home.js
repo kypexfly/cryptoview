@@ -13,7 +13,7 @@ const Home = () => {
   }, [])
 
   return (<>
-    <div id="home" className="landing">
+    <div id="home" className={!user ? 'landing full' : 'landing'}>
       <div className="container">
         <div className="landbox">
           <h1 className='center'>Welcome to CryptoView!</h1>

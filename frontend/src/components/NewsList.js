@@ -17,7 +17,7 @@ const NewsList = ({ anew }) => {
           <span>{title}</span> <small><i className="fa-solid fa-link"></i> {domain}</small>
         </a>
 
-        <div>
+        <div className='feed-details'>
           <span className={`feed-title-kind ${(kind === 'media') && 'price-green'}`}>({kind})</span>
           {currencies && currencies.map((currency, index) => (
             <span className='badge' key={index}>{currency.code}</span>

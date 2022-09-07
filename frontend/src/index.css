@@ -351,6 +351,12 @@ form label {
   overflow: scroll;
 }
 
+.feed-details {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 #converter {
   max-width: 750px;
   margin: 0 auto;
@@ -431,8 +437,13 @@ hr {
   padding: 0 .5em;
 }
 
+.full {
+  height: 95vh;
+}
+
 .cryptopanic {
-  float: right;
+  text-align: right;
+  flex: 1;
 }
 
 .cryptopanic a {
@@ -732,8 +743,8 @@ button:disabled, button[disabled] {
   padding: 1em 3em;
 }
 
-.landing > .container {
-  margin: 0 auto;
+.landing.full > .container {
+  align-content: center;
 }
 
 .landing h1 {
