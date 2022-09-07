@@ -348,7 +348,7 @@ form label {
   padding: 0.5em;
   min-height: 100px;
   flex-wrap: wrap;
-  /* overflow: scroll; */
+  overflow: scroll;
 }
 
 #converter {
@@ -496,7 +496,7 @@ hr {
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   #logo, .nav {
     flex: 100%;
     text-align: center;
