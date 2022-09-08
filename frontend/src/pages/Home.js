@@ -38,12 +38,12 @@ const Home = () => {
       <div id='home-loggedin'>
         <div>
           <div className="something">
-            <h2>Mis Cryptos</h2>
+            <h2>My Cryptos</h2>
             <hr />
           </div>
         </div>
         <div>
-          <h2>Últimas noticias</h2>
+          <h2>Latest News</h2>
           <hr />
 
           <div className="feed-list">

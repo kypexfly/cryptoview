@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout'
 
@@ -12,13 +12,6 @@ const Navbar = () => {
     logout()
   }
 
-  const useActiveNav = (loc) => {
-    const location = useLocation()
-    if (location.pathname === loc) {
-      return 'active'
-    }
-  }
-
   return (
     <header>
       <div id="navbar">
@@ -30,32 +23,29 @@ const Navbar = () => {
           <SearchAssets />
 
           <div className="nav">
-            <Link to="/assets" className={useActiveNav('/assets')}>
+            <NavLink to="/">
+              <i className="fa-solid fa-house"></i>
+            </NavLink>
+            <NavLink to="/assets" >
               <i className="fa-solid fa-ranking-star"></i>
-            </Link>
-            <Link to="/news" className={useActiveNav('/news')}>
+            </NavLink>
+            <NavLink to="/news" >
               <i className="fa-solid fa-newspaper"></i>
-            </Link>
-            <Link to="/converter" className={useActiveNav('/converter')}>
-              <i className="fa-solid fa-calculator"></i>
-            </Link>
-            <Link to="/about" className={useActiveNav('/about')}>
-              <i className="fa-solid fa-circle-info"></i>
-            </Link>
+            </NavLink>
+            <NavLink to="/converter" >
+              <i className="fa-solid fa-arrow-right-arrow-left"></i>
+            </NavLink>
+            <NavLink to="/about" >
+              <i className="fa-solid fa-users"></i>
+            </NavLink>
             <>
               {user && (
                 <Link to='/' onClick={handleClick}>Logout</Link>
               )}
               {!user && (
                 <>
-                  <Link to="/login" className={useActiveNav('/login')}>
-                    Login
-                    {/* <i className="fa-solid fa-user"></i> */}
-                  </Link>
-                  <Link to="/signup" className={useActiveNav('/signup')}>
-                    Sign Up
-                    {/* <i className="fa-solid fa-arrow-right-to-bracket"></i> */}
-                  </Link>
+                  <NavLink to="/login" >Login</NavLink>
+                  <NavLink to="/signup" >Sign Up</NavLink>
                 </>
               )}
             </>

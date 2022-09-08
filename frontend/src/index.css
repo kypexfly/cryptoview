@@ -126,6 +126,8 @@ code {
 .nav a {
   padding: .5em .5em;
   color: gray;
+  flex: 1;
+  border-bottom: 2px solid transparent;
   transition: 0.1s ease;
 }
 
@@ -201,9 +203,9 @@ code {
   color: var(--price-green);
 }
 
-.green::before {
+/* .green::before {
   content: "+";
-}
+} */
 
 .red {
   color: var(--price-red);
@@ -529,10 +531,6 @@ hr {
     justify-content: space-between;
     display: flex;
     align-items: center;
-  }
-
-  .nav a {
-    flex: 1;
   }
 
   .feed-row {
