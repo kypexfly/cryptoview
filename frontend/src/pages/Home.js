@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuthContext } from '../hooks/useAuthContext'
+import CryptoPriceFeed from '../components/CryptoPriceFeed'
 import NewsList from '../components/NewsList'
+import { useAuthContext } from '../hooks/useAuthContext'
 import { useNewsFeed } from '../hooks/useNewsFeed'
 
 const Home = () => {
@@ -40,6 +41,7 @@ const Home = () => {
           <div className="something">
             <h2>My Cryptos</h2>
             <hr />
+            <CryptoPriceFeed />
           </div>
         </div>
         <div>

@@ -22,7 +22,7 @@ const NewsList = ({ anew }) => {
           {currencies && currencies.map((currency, index) => (
             <span className='badge' key={index}>{currency.code}</span>
           ))}
-          <span className='cryptopanic'><small><a href={url}>Discuss on <img width={15} src="images/cryptopanic.ico" alt="cryptopanic" />
+          <span className='cryptopanic'><small><a href={url}>Discuss on <img width={15} src={`${process.env.PUBLIC_URL}/images/cryptopanic.ico`} alt="cryptopanic" />
           </a></small></span>
         </div>
       </div>

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
 // components
-// import OtherCoins from '../components/OtherCoins'
 import Dashboard from '../components/Dashboard'
+import CoinNews from '../components/CoinNews'
 
 const Asset = () => {
   const navigate = useNavigate()
@@ -39,7 +39,8 @@ const Asset = () => {
         </div>
 
         {!Object.keys(asset).length ? undefined : <Dashboard asset={asset} />}
-
+        <h1>Latest {asset.name} News</h1>
+        <CoinNews symbol={asset.symbol} />
         {/* <OtherCoins /> */}
       </div>
     </div>
