@@ -1,13 +1,14 @@
 {
-  "name": "coinmarketcap_react_node",
-  "version": "1.0.0",
-  "description": "* https://stackoverflow.com/questions/42761068/paginate-javascript-array (should be done in backend)",
+  "name": "cryptoview",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Application to see news, manage and analyze cryptocurrencies.",
   "main": "index.js",
   "scripts": {
-    "frontend": "cd frontend && npm i && npm start",
-    "backend": "cd backend && npm i npm && npm run dev",
-    "app": "concurrently --kill-others-on-fail \"npm:frontend\" \"npm:backend\" ",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "frontend": "cd frontend && pnpm i && pnpm start",
+    "backend": "cd backend && pnpm i pnpm && pnpm run dev",
+    "app": "concurrently --kill-others-on-fail \"pnpm:frontend\" \"pnpm:backend\" ",
+    "heroku-postbuild": "cd frontend && pnpm install && pnpm run build"
   },
   "repository": {
     "type": "git",
