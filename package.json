@@ -7,8 +7,7 @@
   "scripts": {
     "frontend": "cd frontend && pnpm i && pnpm start",
     "backend": "cd backend && pnpm i pnpm && pnpm run dev",
-    "app": "concurrently --kill-others-on-fail \"pnpm:frontend\" \"pnpm:backend\" ",
-    "heroku-postbuild": "cd frontend && pnpm install && pnpm run build"
+    "app": "concurrently --kill-others-on-fail \"pnpm:frontend\" \"pnpm:backend\" "
   },
   "repository": {
     "type": "git",

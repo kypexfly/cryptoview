@@ -13,7 +13,8 @@ specifiers:
   jsonwebtoken: ^8.5.1
   mongoose: ^6.5.3
   nodemon: ^2.0.19
-  npm: ^8.19.1
+  npm: ^8.19.3
+  pnpm: ^7.27.0
   validator: ^13.7.0
 
 dependencies:
@@ -30,6 +31,7 @@ dependencies:
   mongoose: 6.9.1
   nodemon: 2.0.20
   npm: 8.19.3
+  pnpm: 7.27.0
   validator: 13.9.0
 
 packages:
@@ -2762,6 +2764,12 @@ packages:
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+    dev: false
+
+  /pnpm/7.27.0:
+    resolution: {integrity: sha512-nvxGrxgu3oYyw7zg7DdotEnqp9r/c0/iLZHr6QewJPEkVFGSPdsxrm0HFKBkOqwCInoutFzz/mtGx+pbYV8UCw==}
+    engines: {node: '>=14.6'}
+    hasBin: true
     dev: false
 
   /prelude-ls/1.2.1:
