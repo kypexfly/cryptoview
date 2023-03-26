@@ -8,9 +8,11 @@ module.exports = {
     node: true
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'standard'
+    'standard',
+    'prettier'
   ],
   overrides: [
   ],
@@ -24,8 +26,10 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'off',
-    camelcase: 'off',
-    'react/prop-types': 'off'
+    camelcase: 'error',
+    'no-duplicate-imports': 'error',
+    'react/prop-types': 'off',
+    quotes: ['error', 'single'],
   },
   settings: {
     react: {
