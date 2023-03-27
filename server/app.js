@@ -29,6 +29,7 @@ app.use((req, res, next) => {
 // start app-server-api
 
 mongoose
+  .set('strictQuery', true)
   .connect(process.env.MONG_URI)
   .then(() => {
     app.listen(PORT, () => {

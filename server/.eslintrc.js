@@ -5,26 +5,24 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true
+    node: true,
   },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'standard',
-    'prettier'
+    'prettier',
   ],
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  plugins: [
-    'react'
-  ],
+  plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-no-undef': 'off',
     'no-unused-vars': 'off',
     camelcase: 'error',
     'no-duplicate-imports': 'error',
@@ -33,7 +31,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'detect'
-    }
-  }
+      version: 'detect',
+    },
+  },
 }
