@@ -5,11 +5,7 @@ const UserProfile = () => {
     document.title = 'User Profile - CryptoView'
   }, [])
 
-  return (
-    <div className="container">
-      User profile
-    </div>
-  )
+  return <div className='container'>User profile</div>
 }
 
 export default UserProfile

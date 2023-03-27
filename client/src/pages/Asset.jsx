@@ -24,14 +24,14 @@ const Asset = () => {
   }, [coinid])
 
   return (
-    <div className="container">
-      <div id="asset">
-        <div className="breadcrum">
+    <div className='container'>
+      <div id='asset'>
+        <div className='breadcrum'>
           <button onClick={() => navigate(-1)}>
-            <i className="fa-regular fa-circle-left"></i> Go back
+            <i className='fa-regular fa-circle-left'></i> Go back
           </button>
-          <div className="breadcrum-nav">
-            / <Link to="/assets">Assets</Link> /{' '}
+          <div className='breadcrum-nav'>
+            / <Link to='/assets'>Assets</Link> /{' '}
             <strong>
               <Link to={`/assets/${asset.id}`}>{asset.name}</Link>
             </strong>

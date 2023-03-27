@@ -16,9 +16,13 @@ export const useNewsFeed = () => {
   }
 
   useEffect(() => {
-    const loadLangs = JSON.parse(localStorage.getItem('newsLangs')) ? JSON.parse(localStorage.getItem('newsLangs')) : langs
+    const loadLangs = JSON.parse(localStorage.getItem('newsLangs'))
+      ? JSON.parse(localStorage.getItem('newsLangs'))
+      : langs
     setLangs(loadLangs)
-    const lang_param = Object.keys(loadLangs).filter(key => loadLangs[key] === true).join(',')
+    const lang_param = Object.keys(loadLangs)
+      .filter((key) => loadLangs[key] === true)
+      .join(',')
     const url = '/api/news?'.concat('&regions=', lang_param)
     fetchNewsFeed(url)
   }, [])
@@ -26,7 +30,9 @@ export const useNewsFeed = () => {
   const handlePrev = async () => {
     if (news.previous == null) return
     setNumpage(numpage - 1)
-    const lang_param = Object.keys(langs).filter(key => langs[key] === true).join(',')
+    const lang_param = Object.keys(langs)
+      .filter((key) => langs[key] === true)
+      .join(',')
     const prev_url = '/api/news?page='.concat(numpage - 1, '&regions=', lang_param)
     setNews([])
     fetchNewsFeed(prev_url)
@@ -35,14 +41,18 @@ export const useNewsFeed = () => {
   const handleNext = async () => {
     if (news.next == null) return
     setNumpage(numpage + 1)
-    const lang_param = Object.keys(langs).filter(key => langs[key] === true).join(',')
+    const lang_param = Object.keys(langs)
+      .filter((key) => langs[key] === true)
+      .join(',')
     const next_url = '/api/news?page='.concat(numpage + 1, '&regions=', lang_param)
     setNews([])
     fetchNewsFeed(next_url)
   }
 
   const handleLang = async () => {
-    const lang_param = Object.keys(langs).filter(key => langs[key] === true).join(',')
+    const lang_param = Object.keys(langs)
+      .filter((key) => langs[key] === true)
+      .join(',')
     const lang_url = '/api/news?regions='.concat(lang_param)
     setNews([])
     fetchNewsFeed(lang_url)
@@ -53,7 +63,7 @@ export const useNewsFeed = () => {
   const handleLangSelect = (e) => {
     setLangs({
       ...langs,
-      [e.target.value]: !langs[e.target.value]
+      [e.target.value]: !langs[e.target.value],
     })
   }
 

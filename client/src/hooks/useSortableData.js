@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from 'react'
 
 export const useSortableData = (items, config = null) => {
@@ -44,11 +43,7 @@ export const useSortableData = (items, config = null) => {
 
   const requestSort = (key) => {
     let direction = 'ascending'
-    if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === 'ascending'
-    ) {
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
       direction = 'descending'
     }
     setSortConfig({ key, direction })

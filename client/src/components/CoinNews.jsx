@@ -9,21 +9,25 @@ const CoinNews = ({ symbol }) => {
 
   const fetchCoinNews = () => {
     fetch(`/api/news/?currencies=${symbol}`)
-      .then(res => res.json())
-      .then(json => setNews(json))
-      .catch(err => console.log(err))
+      .then((res) => res.json())
+      .then((json) => setNews(json))
+      .catch((err) => console.log(err))
   }
   useEffect(() => {
     fetchCoinNews()
   }, [symbol])
 
   return (
-    <div className="feed-list">
-      {!news.results
-        ? (<div className='loading'><span><i className="fas fa-sync fa-spin"></i> Loading...</span></div>)
-        : news.results.slice(0, 10).map((anew, index) => (
-          <NewsList anew={anew} key={index} />
-        ))}
+    <div className='feed-list'>
+      {!news.results ? (
+        <div className='loading'>
+          <span>
+            <i className='fas fa-sync fa-spin'></i> Loading...
+          </span>
+        </div>
+      ) : (
+        news.results.slice(0, 10).map((anew, index) => <NewsList anew={anew} key={index} />)
+      )}
     </div>
   )
 }

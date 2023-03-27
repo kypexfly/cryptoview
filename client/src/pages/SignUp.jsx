@@ -17,37 +17,45 @@ const SignUp = () => {
   }, [])
 
   return (
-    <div className="container">
-      <div className="boxed">
+    <div className='container'>
+      <div className='boxed'>
         <h1>Sign Up</h1>
         <hr />
 
-        <form id="signup-form" onSubmit={handleSubmit} autoComplete="off">
-          <label><i className="fa-solid fa-envelope"></i> Email</label>
+        <form id='signup-form' onSubmit={handleSubmit} autoComplete='off'>
+          <label>
+            <i className='fa-solid fa-envelope'></i> Email
+          </label>
           <input
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            placeholder="enter an email address"
-            autoComplete="off"
-            type="email" />
+            placeholder='enter an email address'
+            autoComplete='off'
+            type='email'
+          />
 
-          <label><i className="fa-solid fa-key"></i> Password</label>
+          <label>
+            <i className='fa-solid fa-key'></i> Password
+          </label>
           <input
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            placeholder="enter a strong password"
-            autoComplete="off"
-            type="password" />
+            placeholder='enter a strong password'
+            autoComplete='off'
+            type='password'
+          />
 
-          <div className="center">
-            <button disabled={isLoading} className="btn-link">
+          <div className='center'>
+            <button disabled={isLoading} className='btn-link'>
               Sign up
             </button>
-            {error && <div className="error">{error}</div>}
+            {error && <div className='error'>{error}</div>}
           </div>
         </form>
 
-        <p>Already have an account? <Link to="/login">Login now</Link></p>
+        <p>
+          Already have an account? <Link to='/login'>Login now</Link>
+        </p>
       </div>
     </div>
   )

@@ -18,20 +18,20 @@ import { useAuthContext } from './hooks/useAuthContext'
 function App() {
   const { user } = useAuthContext()
   return (
-    <div className="App">
+    <div className='App'>
       <BrowserRouter>
         <Navbar />
-        <div className="pages">
+        <div className='pages'>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/assets" element={<Coins />} />
-            <Route path="/assets/:coinid" element={<Asset />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/converter" element={<Converter />} />
-            <Route path="/signup" element={!user ? <SignUp /> : <Navigate to='/' />} />
-            <Route path="/login" element={!user ? <Login /> : <Navigate to='/' />} />
-            <Route path="/users/:userid" element={<UserProfile />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/assets' element={<Coins />} />
+            <Route path='/assets/:coinid' element={<Asset />} />
+            <Route path='/news' element={<News />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/converter' element={<Converter />} />
+            <Route path='/signup' element={!user ? <SignUp /> : <Navigate to='/' />} />
+            <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+            <Route path='/users/:userid' element={<UserProfile />} />
           </Routes>
         </div>
 

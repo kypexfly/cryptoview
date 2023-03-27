@@ -19,10 +19,14 @@ const OtherCoins = () => {
   }, [])
 
   return (
-    <div id="othercoins">
+    <div id='othercoins'>
       {/* <div className="dash-details"> */}
-      <div className="boxstyle"><Link to="/assets/ethereum">Text 1</Link></div>
-      <div className="boxstyle"><Link to="/assets/bitcoin">Text 2</Link></div>
+      <div className='boxstyle'>
+        <Link to='/assets/ethereum'>Text 1</Link>
+      </div>
+      <div className='boxstyle'>
+        <Link to='/assets/bitcoin'>Text 2</Link>
+      </div>
       {/* </div> */}
     </div>
   )

@@ -28,13 +28,14 @@ app.use((req, res, next) => {
 
 // start app-server-api
 
-mongoose.connect(process.env.MONG_URI)
+mongoose
+  .connect(process.env.MONG_URI)
   .then(() => {
     app.listen(PORT, () => {
       console.log(`💚 Connected to DB and listening to port ${PORT}...`)
     })
   })
-  .catch(err => console.log(err))
+  .catch((err) => console.log(err))
 
 // Routes
 const assetsRoutes = require('./routers/assets')

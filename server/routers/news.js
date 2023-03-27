@@ -6,7 +6,8 @@ const router = express.Router()
 // router.use(requireAuth)
 
 router.get('/', (req, res) => {
-  let api_url = 'https://cryptopanic.com/api/v1/posts/?auth_token=c696e7b458c6e01b7230f59a5047455f7774adfc&public=true'
+  let api_url =
+    'https://cryptopanic.com/api/v1/posts/?auth_token=c696e7b458c6e01b7230f59a5047455f7774adfc&public=true'
   req.query.page && (api_url = api_url.concat('&page=', req.query.page))
   req.query.currencies && (api_url = api_url.concat('&currencies=', req.query.currencies))
   req.query.regions && (api_url = api_url.concat('&regions=', req.query.regions))
@@ -14,7 +15,7 @@ router.get('/', (req, res) => {
 
   const options = {
     method: 'GET',
-    url: api_url
+    url: api_url,
   }
 
   console.log(options.url)

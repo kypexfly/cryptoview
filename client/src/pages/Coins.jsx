@@ -32,7 +32,7 @@ const CoinList = () => {
       headerName: 'Rank',
       width: 65,
       sortable: false,
-      align: 'center'
+      align: 'center',
     },
     {
       field: 'name',
@@ -42,65 +42,68 @@ const CoinList = () => {
       renderCell: (params) => (
         <>
           <img
-            className="asset-icon"
-            loading="lazy"
-            src={`https://assets.coincap.io/assets/icons/${String(params.row.symbol).toLowerCase()}@2x.png`}
+            className='asset-icon'
+            loading='lazy'
+            src={`https://assets.coincap.io/assets/icons/${String(
+              params.row.symbol,
+            ).toLowerCase()}@2x.png`}
             alt={params.row.symbol}
           />
           <div>
             <Link to={`/assets/${params.row.id}`}>
               <strong>{params.row.name}</strong>
               <p>
-                <small className="text-gray">{params.row.symbol}</small>
+                <small className='text-gray'>{params.row.symbol}</small>
               </p>
             </Link>
           </div>
         </>
-      )
+      ),
     },
     {
       field: 'priceUsd',
       headerName: 'Price',
       minWidth: 100,
       flex: 1,
-      renderCell: (params) => (formatCurrency(params.value, 'USD', 'en'))
+      renderCell: (params) => formatCurrency(params.value, 'USD', 'en'),
     },
     {
       field: 'changePercent24Hr',
       headerName: 'Change 24h',
       flex: 1,
       renderCell: (params) => (
-        <span className={(params.value > 0 ? 'green' : 'red')}>
+        <span className={params.value > 0 ? 'green' : 'red'}>
           {Number(params.value).toFixed(2)}%
         </span>
-      )
+      ),
     },
     {
       field: 'marketCapUsd',
       headerName: 'Market Cap',
       flex: 1,
-      renderCell: (params) => (`$${formatCompact.format(params.value)}`)
+      renderCell: (params) => `$${formatCompact.format(params.value)}`,
     },
     {
       field: 'supply',
       headerName: 'Supply',
       flex: 1,
-      renderCell: (params) => formatCurrency(Number(params.value), '', 'en')
+      renderCell: (params) => formatCurrency(Number(params.value), '', 'en'),
     },
     {
       field: 'maxSupply',
       headerName: 'Max. Supply',
       flex: 1,
-      renderCell: (params) => params.value > 0 ? formatCurrency(Number(params.value), '', 'en') : '-'
-    }
+      renderCell: (params) =>
+        params.value > 0 ? formatCurrency(Number(params.value), '', 'en') : '-',
+    },
   ]
 
   return (
-    <div id="assets">
-      <div className="container">
+    <div id='assets'>
+      <div className='container'>
         <h1>Crypto Market Capitalization</h1>
         <hr />
-        <p className="right">
+        <p className='right'>
           <strong>Last update:</strong> {new Date().toLocaleTimeString()} <br />{' '}
         </p>
         <br />
@@ -117,39 +120,39 @@ const CoinList = () => {
             fontFamily: 'Rubik',
             fontSize: '1em',
             '& .MuiDataGrid-row:hover': {
-              bgcolor: 'rgba(0,0,0,.2)'
+              bgcolor: 'rgba(0,0,0,.2)',
             },
             '& .MuiDataGrid-cell': {
               borderBottomColor: '#3e3e3e',
-              padding: '1em'
+              padding: '1em',
             },
             '& .MuiDataGrid-cell:focus': {
-              outlineColor: 'transparent'
+              outlineColor: 'transparent',
             },
             '& .MuiDataGrid-columnSeparator': {
-              color: '#3e3e3e'
+              color: '#3e3e3e',
             },
             '& .MuiDataGrid-columnHeaders': {
-              border: 'none'
+              border: 'none',
             },
             '& .MuiDataGrid-columnHeader': {
-              textAlign: 'center'
+              textAlign: 'center',
             },
             '& .MuiDataGrid-columnHeaderTitle': {
-              fontWeight: 'bold'
+              fontWeight: 'bold',
             },
             '& .MuiDataGrid-columnHeader:focus': {
-              outlineColor: 'transparent'
+              outlineColor: 'transparent',
             },
             '& .MuiDataGrid-sortIcon': {
-              color: 'white'
+              color: 'white',
             },
             '& .MuiDataGrid-footerContainer': {
-              borderColor: '#3e3e3e'
+              borderColor: '#3e3e3e',
             },
             '& .MuiTablePagination-toolbar': {
-              color: '#ffffffde'
-            }
+              color: '#ffffffde',
+            },
           }}
           autoHeight
           rowHeight={Number(65)}
