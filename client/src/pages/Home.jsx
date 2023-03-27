@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import CryptoPriceFeed from '../components/CryptoPriceFeed'
-import NewsList from '../components/NewsList'
+import { CryptoPriceFeed, NewsList } from '../components'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNewsFeed } from '../hooks/useNewsFeed'
 

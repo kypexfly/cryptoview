@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import NewsList from '../components/NewsList'
+import { NewsList } from '../components'
 import { useNewsFeed } from '../hooks/useNewsFeed'
 
 const News = () => {
