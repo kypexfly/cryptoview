@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CryptoPriceFeed, NewsList } from '../components'
@@ -6,7 +7,10 @@ import { useNewsFeed } from '../hooks/useNewsFeed'
 
 const Home = () => {
   const { user } = useAuthContext()
-  const { news } = useNewsFeed()
+  
+  if (user) {
+    const { news } = useNewsFeed()
+  }
 
   useEffect(() => {
     document.title = 'CryptoView'

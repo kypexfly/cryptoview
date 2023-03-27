@@ -1,20 +1,18 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-// components
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-// pages
-import Home from './pages/Home'
-import Asset from './pages/Asset'
-import Coins from './pages/Coins'
-import News from './pages/News'
-import About from './pages/About'
-import Converter from './pages/Converter'
-import SignUp from './pages/SignUp'
-import Login from './pages/Login'
-import UserProfile from './pages/UserProfile'
+import { lazy, Suspense } from 'react'
+import { Navbar, Footer } from './components'
 import { useAuthContext } from './hooks/useAuthContext'
+// pages
+const Home = lazy(() => import(/* webpackChunkName: "home" */ './pages/Home'))
+const Asset = lazy(() => import(/* webpackChunkName: "asset" */ './pages/Asset'))
+const Coins = lazy(() => import(/* webpackChunkName: "coins" */ './pages/Coins'))
+const News = lazy(() => import(/* webpackChunkName: "news" */ './pages/News'))
+const About = lazy(() => import(/* webpackChunkName: "about" */ './pages/About'))
+const Converter = lazy(() => import(/* webpackChunkName: "converter" */ './pages/Converter'))
+const SignUp = lazy(() => import(/* webpackChunkName: "signup" */ './pages/SignUp'))
+const Login = lazy(() => import(/* webpackChunkName: "login" */ './pages/Login'))
+const UserProfile = lazy(() => import(/* webpackChunkName: "userprofile" */ './pages/UserProfile'))
 
-// eslint-disable-next-line space-before-function-paren
 function App() {
   const { user } = useAuthContext()
   return (
@@ -22,17 +20,19 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <div className='pages'>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/assets' element={<Coins />} />
-            <Route path='/assets/:coinid' element={<Asset />} />
-            <Route path='/news' element={<News />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/converter' element={<Converter />} />
-            <Route path='/signup' element={!user ? <SignUp /> : <Navigate to='/' />} />
-            <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
-            <Route path='/users/:userid' element={<UserProfile />} />
-          </Routes>
+          <Suspense>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/assets' element={<Coins />} />
+              <Route path='/assets/:coinid' element={<Asset />} />
+              <Route path='/news' element={<News />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/converter' element={<Converter />} />
+              <Route path='/signup' element={!user ? <SignUp /> : <Navigate to='/' />} />
+              <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+              <Route path='/users/:userid' element={<UserProfile />} />
+            </Routes>
+          </Suspense>
         </div>
 
         <Footer />
