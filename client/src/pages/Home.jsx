@@ -7,10 +7,8 @@ import { useNewsFeed } from '../hooks/useNewsFeed'
 
 const Home = () => {
   const { user } = useAuthContext()
-  
-  if (user) {
-    const { news } = useNewsFeed()
-  }
+  const { news } = useNewsFeed()
+
 
   useEffect(() => {
     document.title = 'CryptoView'
