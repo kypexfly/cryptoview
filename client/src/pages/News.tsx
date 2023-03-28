@@ -1,14 +1,39 @@
-import { useEffect } from 'react'
-import { NewsList } from '../components'
-import { useNewsFeed } from '../hooks/useNewsFeed'
+import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { NewsFeed } from '../components'
 
 const News = () => {
-  const { news, langs, numpage, handlePrev, handleNext, handleLang, handleLangSelect } =
-    useNewsFeed()
-
   useEffect(() => {
     document.title = 'News - CryptoView'
   }, [])
+
+  const [page, setPage] = useState(1)
+  const [langs, setLangs] = useState({
+    en: false,
+    es: false,
+    pt: false,
+    fr: false,
+    ru: false,
+  })
+
+  const handleLangSelect = (e) => {
+    setLangs((prev) => ({
+      ...prev,
+      [e.target.value]: !prev[e.target.value],
+    }))
+  }
+
+  const fetchNews = (page = 1) => fetch('/api/news?page=' + page).then((res) => res.json())
+
+  const {
+    data: news,
+    isLoading,
+    isPreviousData,
+  } = useQuery({
+    queryKey: ['news', page],
+    queryFn: () => fetchNews(page),
+    keepPreviousData: true,
+  })
 
   return (
     <div>
@@ -59,35 +84,34 @@ const News = () => {
                   </button>
                 </span>
 
-                <button className='button' onClick={handleLang}>
+                {/* <button className='button' onClick={handleLang}>
                   Save
-                </button>
+                </button> */}
               </div>
               <div>
-                <h4>Page {numpage} / 10</h4>
+                <h4>Page {page} / 10</h4>
                 <div>
-                  <button onClick={handlePrev} disabled={news.previous == null ? 1 : 0}>
+                  <button
+                    onClick={() => setPage((old) => Math.max(old - 1, 0))}
+                    disabled={page === 1}
+                  >
                     prev
                   </button>
-                  <button onClick={handleNext} disabled={news.next == null ? 1 : 0}>
-                    next
+                  <button
+                    onClick={() => {
+                      if (!isPreviousData && news.next) {
+                        setPage((old) => old + 1)
+                      }
+                    }}
+                  >
+                    Next
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className='feed-list'>
-            {!news.results ? (
-              <div className='loading'>
-                <span>
-                  <i className='fas fa-sync fa-spin'></i> Loading...
-                </span>
-              </div>
-            ) : (
-              news.results.map((anew, index) => <NewsList anew={anew} key={index} />)
-            )}
-          </div>
+          <NewsFeed news={news} isLoading={isLoading} />
         </div>
       </div>
     </div>

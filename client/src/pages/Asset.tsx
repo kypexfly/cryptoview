@@ -1,27 +1,41 @@
+import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import { NewsFeed, OtherCoins } from '../components'
 
 // components
 import Dashboard from '../components/Dashboard'
-import CoinNews from '../components/CoinNews'
 
 const Asset = () => {
   const navigate = useNavigate()
   const { coinid } = useParams()
-  const [asset, setAsset] = useState({})
-
-  const fetchAsset = async () => {
-    const response = await fetch(`/api/assets/${coinid}`)
-    const json = await response.json()
-    if (response.ok) {
-      setAsset(json.data)
-    }
-  }
 
   useEffect(() => {
-    fetchAsset()
     coinid && (document.title = coinid + ' - CryptoView' || 'CryptoView')
   }, [coinid])
+
+  // Initial data
+  const {
+    data: asset,
+    isLoading: loadingAsset,
+    isError,
+  } = useQuery({
+    queryKey: ['assets', coinid],
+    queryFn: () => fetch('/api/assets/' + coinid).then((res) => res.json().then((res) => res.data)),
+  })
+
+  // Search news from asset
+  const fetchNewsFromSymbol = (page = 1, symbol) =>
+    fetch(`/api/news?page=${page}?currencies=${symbol}`).then((res) => res.json())
+
+  const { data: news, isLoading: loadingNews } = useQuery({
+    queryKey: ['news', asset?.symbol],
+    queryFn: () => fetchNewsFromSymbol(1, asset.symbol),
+    enabled: asset && Object.keys(asset).length > 0,
+  })
+
+  if (loadingAsset) return null
+  if (isError) return <div>Asset not found</div>
 
   return (
     <div className='container'>
@@ -38,9 +52,10 @@ const Asset = () => {
           </div>
         </div>
 
-        {!Object.keys(asset).length ? undefined : <Dashboard asset={asset} />}
+        <Dashboard asset={asset} />
+
         <h1>Latest {asset.name} News</h1>
-        <CoinNews symbol={asset.symbol} />
+        <NewsFeed news={news} isLoading={loadingNews} limit={10} />
         {/* <OtherCoins /> */}
       </div>
     </div>

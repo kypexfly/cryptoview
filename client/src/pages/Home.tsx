@@ -1,14 +1,19 @@
 /* eslint-disable no-undef */
+import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { CryptoPriceFeed, NewsList } from '../components'
+import { CryptoPriceFeed, NewsFeed } from '../components'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useNewsFeed } from '../hooks/useNewsFeed'
 
 const Home = () => {
   const { user } = useAuthContext()
-  const { news } = useNewsFeed()
 
+  const fetchNews = (page = 1) => fetch('/api/news?page=' + page).then((res) => res.json())
+
+  const { data: news, isLoading } = useQuery({
+    queryKey: ['news', 1],
+    queryFn: () => fetchNews(1),
+  })
 
   useEffect(() => {
     document.title = 'CryptoView'
@@ -55,18 +60,7 @@ const Home = () => {
             <div>
               <h2>Latest News</h2>
               <hr />
-
-              <div className='feed-list'>
-                {!news.results ? (
-                  <div className='loading'>
-                    <span>
-                      <i className='fas fa-sync fa-spin'></i> Loading...
-                    </span>
-                  </div>
-                ) : (
-                  news.results.map((anew, index) => <NewsList anew={anew} key={index} />)
-                )}
-              </div>
+              <NewsFeed news={news} isLoading={isLoading} />
             </div>
           </div>
         </div>
