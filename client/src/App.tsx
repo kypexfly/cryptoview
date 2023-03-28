@@ -11,7 +11,6 @@ const About = lazy(() => import('./pages/About'))
 const Converter = lazy(() => import('./pages/Converter'))
 const SignUp = lazy(() => import('./pages/SignUp'))
 const Login = lazy(() => import('./pages/Login'))
-const UserProfile = lazy(() => import('./pages/UserProfile'))
 
 function App() {
   const { user } = useAuthContext()
@@ -30,7 +29,6 @@ function App() {
               <Route path='/converter' element={<Converter />} />
               <Route path='/signup' element={!user ? <SignUp /> : <Navigate to='/' />} />
               <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
-              <Route path='/users/:userid' element={<UserProfile />} />
             </Routes>
           </Suspense>
         </div>
