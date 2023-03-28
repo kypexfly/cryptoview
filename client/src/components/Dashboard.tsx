@@ -1,4 +1,3 @@
-import ReactTooltip from 'react-tooltip'
 import Chart from './Chart'
 import { formatCurrency } from '@coingecko/cryptoformat'
 
@@ -58,7 +57,6 @@ const Dashboard = ({ asset }) => {
         </div>
       </div>
 
-      <ReactTooltip />
     </div>
   )
 }

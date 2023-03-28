@@ -3,15 +3,15 @@ import { lazy, Suspense } from 'react'
 import { Navbar, Footer } from './components'
 import { useAuthContext } from './hooks/useAuthContext'
 // pages
-const Home = lazy(() => import(/* webpackChunkName: "home" */ './pages/Home'))
-const Asset = lazy(() => import(/* webpackChunkName: "asset" */ './pages/Asset'))
-const Coins = lazy(() => import(/* webpackChunkName: "coins" */ './pages/Coins'))
-const News = lazy(() => import(/* webpackChunkName: "news" */ './pages/News'))
-const About = lazy(() => import(/* webpackChunkName: "about" */ './pages/About'))
-const Converter = lazy(() => import(/* webpackChunkName: "converter" */ './pages/Converter'))
-const SignUp = lazy(() => import(/* webpackChunkName: "signup" */ './pages/SignUp'))
-const Login = lazy(() => import(/* webpackChunkName: "login" */ './pages/Login'))
-const UserProfile = lazy(() => import(/* webpackChunkName: "userprofile" */ './pages/UserProfile'))
+const Home = lazy(() => import('./pages/Home'))
+const Asset = lazy(() => import('./pages/Asset'))
+const Coins = lazy(() => import('./pages/Coins'))
+const News = lazy(() => import('./pages/News'))
+const About = lazy(() => import('./pages/About'))
+const Converter = lazy(() => import('./pages/Converter'))
+const SignUp = lazy(() => import('./pages/SignUp'))
+const Login = lazy(() => import('./pages/Login'))
+const UserProfile = lazy(() => import('./pages/UserProfile'))
 
 function App() {
   const { user } = useAuthContext()
