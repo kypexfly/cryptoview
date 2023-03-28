@@ -35,7 +35,7 @@ const NewsList = ({ anew }) => {
                 Discuss on{' '}
                 <img
                   width={15}
-                  src={`${process.env.PUBLIC_URL}/images/cryptopanic.ico`}
+                  src='/images/cryptopanic.ico'
                   alt='cryptopanic'
                 />
               </a>
