@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { formatCurrency } from '@coingecko/cryptoformat'
 const formatCompact = Intl.NumberFormat('en', { notation: 'compact' })
 import type { GridColDef } from '@mui/x-data-grid'
+import { Container, Heading } from '../components'
 
 const columns: GridColDef[] = [
   {
@@ -148,17 +149,12 @@ const CoinList = () => {
   }, [])
 
   return (
-    <div id='assets'>
-      <div className='container'>
-        <h1>Crypto Market Capitalization</h1>
-        <hr />
-        <p className='right'>
-          <strong>Last update:</strong> {new Date().toLocaleTimeString()} <br />{' '}
-        </p>
-        <br />
-        <TopAssetsTable />
-      </div>
-    </div>
+    <Container>
+      <Heading>
+        Crypto Market Capitalization
+      </Heading>
+      <TopAssetsTable />
+    </Container>
   )
 }
 

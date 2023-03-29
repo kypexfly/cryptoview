@@ -1,7 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { NewsFeed, OtherCoins } from '../components'
+import { Container, Heading, NewsFeed, OtherCoins } from '../components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleLeft } from '@fortawesome/free-regular-svg-icons'
 
 // components
 import Dashboard from '../components/Dashboard'
@@ -38,27 +40,28 @@ const Asset = () => {
   if (isError) return <div>Asset not found</div>
 
   return (
-    <div className='container'>
-      <div id='asset'>
-        <div className='breadcrum'>
-          <button onClick={() => navigate(-1)}>
-            <i className='fa-regular fa-circle-left'></i> Go back
-          </button>
-          <div className='breadcrum-nav'>
-            / <Link to='/assets'>Assets</Link> /{' '}
-            <strong>
-              <Link to={`/assets/${asset.id}`}>{asset.name}</Link>
-            </strong>
-          </div>
+    <Container>
+      <div className='breadcrum'>
+        <button onClick={() => navigate(-1)}>
+          {<FontAwesomeIcon icon={faCircleLeft} />} Go back
+        </button>
+        <div className='breadcrum-nav'>
+          / <Link to='/assets'>Assets</Link> /{' '}
+          <strong>
+            <Link to={`/assets/${asset.id}`}>{asset.name}</Link>
+          </strong>
         </div>
-
-        <Dashboard asset={asset} />
-
-        <h1>Latest {asset.name} News</h1>
-        <NewsFeed news={news} isLoading={loadingNews} limit={10} />
-        {/* <OtherCoins /> */}
       </div>
-    </div>
+
+      <Dashboard asset={asset} />
+
+      <Heading>
+        Latest {asset.name} News
+      </Heading>
+
+      <NewsFeed news={news} isLoading={loadingNews} limit={10} />
+      {/* <OtherCoins /> */}
+    </Container>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { NewsFeed } from '../components'
+import { Container, Heading, NewsFeed } from '../components'
 
 const News = () => {
   useEffect(() => {
@@ -29,6 +29,7 @@ const News = () => {
     data: news,
     isLoading,
     isPreviousData,
+    isFetching,
   } = useQuery({
     queryKey: ['news', page],
     queryFn: () => fetchNews(page),
@@ -36,10 +37,9 @@ const News = () => {
   })
 
   return (
-    <div>
+    <Container>
       <div className='container'>
-        <h1>Crypto News</h1>
-        <hr />
+        <Heading>Crypto News</Heading>
 
         <div id='news'>
           <div className='feed-options boxed'>
@@ -103,8 +103,9 @@ const News = () => {
                         setPage((old) => old + 1)
                       }
                     }}
+                    disabled={isPreviousData || !news?.next}
                   >
-                    Next
+                    next
                   </button>
                 </div>
               </div>
@@ -114,7 +115,7 @@ const News = () => {
           <NewsFeed news={news} isLoading={isLoading} />
         </div>
       </div>
-    </div>
+    </Container>
   )
 }
 

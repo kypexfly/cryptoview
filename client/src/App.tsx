@@ -18,7 +18,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        <main className='pages'>
+        <main className='pages flex min-h-[70vh] grow'>
           <Suspense>
             <Routes>
               <Route path='/' element={<Home />} />

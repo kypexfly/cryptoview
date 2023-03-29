@@ -1,64 +1,69 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Heading } from '../components'
 import { useSignup } from '../hooks/useSignup'
 
-const SignUp = () => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faKey, faUser } from '@fortawesome/free-solid-svg-icons'
+
+const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { signup, isLoading, error } = useSignup()
+
+  useEffect(() => {
+    document.title = 'Sign Up - CryptoView'
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     await signup(email, password)
   }
 
-  useEffect(() => {
-    document.title = 'Sign Up - CryptoView'
-  }, [])
-
   return (
-    <div className='container'>
-      <div className='boxed'>
-        <h1>Sign Up</h1>
-        <hr />
+    <div className='bg-sp-green'>
+      <div className='container mx-auto flex h-full flex-col items-center justify-center px-2 py-6'>
+        <div className='mx-auto w-full max-w-xl rounded-md border border-[#3e3e3e] bg-[#27272b] p-8'>
+          <Heading className='text-center'>Sign Up</Heading>
 
-        <form id='signup-form' onSubmit={handleSubmit} autoComplete='off'>
-          <label>
-            <i className='fa-solid fa-envelope'></i> Email
-          </label>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            placeholder='enter an email address'
-            autoComplete='off'
-            type='email'
-          />
+          <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
+            <label>
+              <FontAwesomeIcon icon={faUser} /> Email
+            </label>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder='enter an email'
+              autoComplete='off'
+              type='email'
+            />
 
-          <label>
-            <i className='fa-solid fa-key'></i> Password
-          </label>
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            placeholder='enter a strong password'
-            autoComplete='off'
-            type='password'
-          />
+            <label>
+              <FontAwesomeIcon icon={faKey} /> Password
+            </label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              placeholder='enter a strong password'
+              autoComplete='off'
+              type='password'
+            />
 
-          <div className='center'>
-            <button disabled={isLoading} className='btn-link'>
-              Sign up
-            </button>
-            {error && <div className='error'>{error}</div>}
-          </div>
-        </form>
+            <div className='my-6 text-center'>
+              <button disabled={isLoading} className='btn-link'>
+                Sign up
+              </button>
+              {error && <div className='error'>{error}</div>}
+            </div>
+          </form>
 
-        <p>
-          Already have an account? <Link to='/login'>Login now</Link>
-        </p>
+          <p>
+            Already have an account? <Link to='/login'>Login now</Link>
+          </p>
+        </div>
       </div>
     </div>
   )
 }
 
-export default SignUp
+export default Login

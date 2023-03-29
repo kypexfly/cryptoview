@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { formatCurrency } from '@coingecko/cryptoformat'
+import { LoadingSpinner } from '../components/loading'
+import { Container, Heading } from '../components'
 
 const Converter = () => {
   const [amount, setAmount] = useState(1)
@@ -35,62 +37,58 @@ const Converter = () => {
   })
 
   return (
-    <div>
-      <div className='container'>
-        <h1>Cryptocurrency Converter Calculator</h1>
-        <hr />
+    <Container>
+      <Heading>Cryptocurrency Converter Calculator</Heading>
 
-        <div id='converter'>
-          <input
-            className='set-amount'
-            type='number'
-            defaultValue={1}
-            placeholder='Ingrese el monto al convertidor'
-            onChange={(e) => setAmount(e.target.value)}
-          />
+      <div id='converter'>
+        <input
+          className='set-amount'
+          type='number'
+          defaultValue={1}
+          placeholder='Ingrese el monto al convertidor'
+          onChange={(e) => setAmount(e.target.value)}
+        />
 
-          <div>
-            <select name='leftSide' onChange={(e) => setLeftCoin(e.target.value)}>
-              <option value='bitcoin'>Bitcoin (BTC)</option>
-              <option value='ethereum'>Ethereum (ETH)</option>
-              <option value='united-states-dollar'>United States Dollar (USD)</option>
-              <option value='euro'>Euro (EUR)</option>
-            </select>
+        <div>
+          <select name='leftSide' onChange={(e) => setLeftCoin(e.target.value)}>
+            <option value='bitcoin'>Bitcoin (BTC)</option>
+            <option value='ethereum'>Ethereum (ETH)</option>
+            <option value='united-states-dollar'>United States Dollar (USD)</option>
+            <option value='euro'>Euro (EUR)</option>
+          </select>
 
-            <select
-              name='rightSide'
-              defaultValue={'united-states-dollar'}
-              onChange={(e) => setRightCoin(e.target.value)}
-            >
-              <option value='bitcoin'>Bitcoin (BTC)</option>
-              <option value='ethereum'>Ethereum (ETH)</option>
-              <option value='united-states-dollar'>United States Dollar (USD)</option>
-              <option value='euro'>Euro (EUR)</option>
-            </select>
+          <select
+            name='rightSide'
+            defaultValue={'united-states-dollar'}
+            onChange={(e) => setRightCoin(e.target.value)}
+          >
+            <option value='bitcoin'>Bitcoin (BTC)</option>
+            <option value='ethereum'>Ethereum (ETH)</option>
+            <option value='united-states-dollar'>United States Dollar (USD)</option>
+            <option value='euro'>Euro (EUR)</option>
+          </select>
 
-            <div className='conversion-result'>
-              <p style={{ fontSize: '20px' }}>
-                <strong>{format_asset.format(amount, 'USD', 'en', true)}</strong> {leftPrice.symbol}{' '}
-                ={' '}
-                <strong>
-                  {!rightPrice.rateUsd ? (
-                    <i className='fas fa-sync fa-spin'></i>
-                  ) : (
-                    formatCurrency(
-                      (amount * leftPrice.rateUsd) / rightPrice.rateUsd,
-                      'USD',
-                      'en',
-                      true,
-                    )
-                  )}
-                </strong>{' '}
-                {rightPrice.symbol}
-              </p>
-            </div>
+          <div className='conversion-result'>
+            <p style={{ fontSize: '20px' }}>
+              <strong>{format_asset.format(amount, 'USD', 'en', true)}</strong> {leftPrice.symbol} ={' '}
+              <strong>
+                {!rightPrice.rateUsd ? (
+                  <LoadingSpinner />
+                ) : (
+                  formatCurrency(
+                    (amount * leftPrice.rateUsd) / rightPrice.rateUsd,
+                    'USD',
+                    'en',
+                    true,
+                  )
+                )}
+              </strong>{' '}
+              {rightPrice.symbol}
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   )
 }
 
