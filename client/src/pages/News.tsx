@@ -29,6 +29,7 @@ const News = () => {
     data: news,
     isLoading,
     isPreviousData,
+    isFetching
   } = useQuery({
     queryKey: ['news', page],
     queryFn: () => fetchNews(page),
@@ -103,8 +104,9 @@ const News = () => {
                         setPage((old) => old + 1)
                       }
                     }}
+                    disabled={isPreviousData || !news?.next}
                   >
-                    Next
+                    next
                   </button>
                 </div>
               </div>

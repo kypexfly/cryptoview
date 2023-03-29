@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { formatCurrency } from '@coingecko/cryptoformat'
+import { LoadingSpinner } from '../components/loading'
 
 const Converter = () => {
   const [amount, setAmount] = useState(1)
@@ -74,7 +75,7 @@ const Converter = () => {
                 ={' '}
                 <strong>
                   {!rightPrice.rateUsd ? (
-                    <i className='fas fa-sync fa-spin'></i>
+                    <LoadingSpinner />
                   ) : (
                     formatCurrency(
                       (amount * leftPrice.rateUsd) / rightPrice.rateUsd,
