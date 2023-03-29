@@ -19,7 +19,7 @@ const LoggedOutPannel = () => {
           </Link>
 
           <Link to='/login' className='btn-link'>
-            Login
+            Log in
           </Link>
         </div>
       </div>

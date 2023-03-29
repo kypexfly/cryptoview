@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { Container, Heading, NewsFeed, OtherCoins } from '../components'
+import { Container, Heading, NewsFeed } from '../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleLeft } from '@fortawesome/free-regular-svg-icons'
 
