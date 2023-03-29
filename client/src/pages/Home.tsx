@@ -5,6 +5,29 @@ import { Link } from 'react-router-dom'
 import { CryptoPriceFeed, NewsFeed } from '../components'
 import { useAuthContext } from '../hooks/useAuthContext'
 
+const Welcome = () => {
+  return (
+    <div id='home' className='landing'>
+      <div className='container'>
+        <div className='landbox'>
+          <h1 className='center'>Welcome to CryptoView!</h1>
+          <hr />
+
+          <div className='landing-sign center'>
+            <p>Sign up to access some interesting features and more!</p>
+            <Link to='/signup' className='btn-link'>
+              Sign Up
+            </Link>
+            <Link to='/login' className='btn-link'>
+              Login
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const Home = () => {
   const { user } = useAuthContext()
 
@@ -21,32 +44,7 @@ const Home = () => {
 
   return (
     <>
-      <div id='home' className={!user ? 'landing full' : 'landing'}>
-        <div className='container'>
-          <div className='landbox'>
-            <h1 className='center'>Welcome to CryptoView!</h1>
-            <hr />
-
-            {!user ? (
-              <>
-                <div className='landing-sign center'>
-                  <p>Sign up to access some interesting features and more!</p>
-                  <Link to='/signup' className='btn-link'>
-                    Sign Up
-                  </Link>
-                  <Link to='/login' className='btn-link'>
-                    Login
-                  </Link>
-                </div>
-              </>
-            ) : (
-              <p>
-                Logged as: <strong>{user.email}</strong>!
-              </p>
-            )}
-          </div>
-        </div>
-      </div>
+      {!user && <Welcome />}
       {user && (
         <div className='container'>
           <div id='home-loggedin'>

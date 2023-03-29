@@ -15,10 +15,10 @@ const Login = lazy(() => import('./pages/Login'))
 function App() {
   const { user } = useAuthContext()
   return (
-    <div className='App'>
+    <>
       <BrowserRouter>
         <Navbar />
-        <div className='pages'>
+        <main className='pages'>
           <Suspense>
             <Routes>
               <Route path='/' element={<Home />} />
@@ -31,11 +31,11 @@ function App() {
               <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
             </Routes>
           </Suspense>
-        </div>
+        </main>
 
         <Footer />
       </BrowserRouter>
-    </div>
+    </>
   )
 }
 

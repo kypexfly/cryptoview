@@ -31,9 +31,9 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <SearchAssets />
+          
 
-          <div className='nav'>
+          <nav className='nav'>
             <NavLink to='/'>
               <FontAwesomeIcon icon={faHouse} /> Home
             </NavLink>
@@ -64,7 +64,9 @@ const Navbar = () => {
                 </>
               )}
             </>
-          </div>
+          </nav>
+
+          <SearchAssets />
         </div>
       </div>
     </header>
