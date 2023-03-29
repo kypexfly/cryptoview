@@ -1,8 +1,17 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout'
-
 import SearchAssets from './SearchAssets'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faHouse,
+  faRankingStar,
+  faNewspaper,
+  faArrowRightArrowLeft,
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons'
+import { faGem } from '@fortawesome/free-regular-svg-icons'
 
 const Navbar = () => {
   const { logout } = useLogout()
@@ -18,7 +27,7 @@ const Navbar = () => {
         <div className='navcont'>
           <div id='logo'>
             <Link to='/'>
-              <i className='fa-regular fa-gem'></i> &nbsp; CryptoView
+              <FontAwesomeIcon icon={faGem} style={{color: 'lime', marginRight: '5px'}} /> Crypto<span style={{color: 'gray'}}>View</span>
             </Link>
           </div>
 
@@ -26,19 +35,21 @@ const Navbar = () => {
 
           <div className='nav'>
             <NavLink to='/'>
-              <i className='fa-solid fa-house'></i>
+              <FontAwesomeIcon icon={faHouse} /> Home
             </NavLink>
             <NavLink to='/assets'>
-              <i className='fa-solid fa-ranking-star'></i>
+              <FontAwesomeIcon icon={faRankingStar} /> Cryptocurrencies
+              {/* Ranking */}
             </NavLink>
             <NavLink to='/news'>
-              <i className='fa-solid fa-newspaper'></i>
+              <FontAwesomeIcon icon={faNewspaper} /> News
             </NavLink>
             <NavLink to='/converter'>
-              <i className='fa-solid fa-arrow-right-arrow-left'></i>
+              <FontAwesomeIcon icon={faArrowRightArrowLeft} />
+              Tools
             </NavLink>
             <NavLink to='/about'>
-              <i className='fa-solid fa-users'></i>
+              <FontAwesomeIcon icon={faUsers} /> About
             </NavLink>
             <>
               {user && (
