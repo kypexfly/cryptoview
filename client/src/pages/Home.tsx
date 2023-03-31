@@ -37,14 +37,14 @@ const LoggedInPannel = () => {
 
   return (
     <Container>
-      <div className='grid grid-cols-[3fr_1fr] gap-5'>
+      <div className='grid gap-5 sm:grid-cols-[3fr_1fr]'>
         <section>
           <Heading as='h2'>My Cryptos</Heading>
           <CryptoPriceFeed />
         </section>
         <section>
           <Heading as='h2'>Latest News</Heading>
-          <NewsFeed news={news} isLoading={isLoading}  />
+          <NewsFeed news={news} isLoading={isLoading} />
         </section>
       </div>
     </Container>

@@ -34,11 +34,11 @@ const NewsList = ({ singleNews }) => {
 
   return (
     <div
-      className={`flex border-b border-l-2 border-b-[#3e3e3e] border-l-transparent p-3 ${
+      className={`flex flex-col border-b border-l-2 border-b-[#3e3e3e] border-l-transparent p-3 last:border-none sm:flex-row ${
         isNew && 'border-l-orange-300'
       }`}
     >
-      <div className='basis-20 self-center pr-3 text-xs text-gray-500'>{time_ago}</div>
+      <div className='sm:basis-24 sm:self-center pr-3 text-xs text-gray-500'>{time_ago}</div>
 
       <div className='flex-1'>
         <a href={url} target='_blank' rel='noopener noreferrer'>

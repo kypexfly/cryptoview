@@ -41,42 +41,42 @@ const News = () => {
       <div className='container'>
         <Heading>Crypto News</Heading>
 
-        <div id='news'>
+        <div className='grid gap-3 lg:grid-cols-[1fr_3fr]'>
           <div className='feed-options boxed'>
-            <div className='sticky'>
+            <div className='sticky top-10'>
               <div>
-                <h4>Language</h4>
-                <span className='btn-lang justify-between'>
+                <Heading as='h4'>Language</Heading>
+                <span className='flex justify-between gap-1'>
                   <button
-                    className={langs.en ? 'active' : undefined}
+                    className={`${langs.en && 'active'} flex-1`}
                     onClick={handleLangSelect}
                     value='en'
                   >
                     en
                   </button>
                   <button
-                    className={langs.es ? 'active' : undefined}
+                    className={`${langs.es && 'active'} flex-1`}
                     onClick={handleLangSelect}
                     value='es'
                   >
                     es
                   </button>
                   <button
-                    className={langs.pt ? 'active' : undefined}
+                    className={`${langs.pt && 'active'} flex-1`}
                     onClick={handleLangSelect}
                     value='pt'
                   >
                     pt
                   </button>
                   <button
-                    className={langs.fr ? 'active' : undefined}
+                    className={`${langs.fr && 'active'} flex-1`}
                     onClick={handleLangSelect}
                     value='fr'
                   >
                     fr
                   </button>
                   <button
-                    className={langs.ru ? 'active' : undefined}
+                    className={`${langs.ru && 'active'} flex-1`}
                     onClick={handleLangSelect}
                     value='ru'
                   >
@@ -88,8 +88,9 @@ const News = () => {
                   Save
                 </button> */}
               </div>
+              
               <div>
-                <h4>Page {page} / 10</h4>
+                <Heading as='h4' className='mt-6'>Page {page} / 10</Heading>
                 <div>
                   <button
                     onClick={() => setPage((old) => Math.max(old - 1, 0))}

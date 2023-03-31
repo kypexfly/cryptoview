@@ -56,7 +56,7 @@ const Navbar = () => {
   }
 
   return (
-    <header className='border-b border-[#3e3e3e] bg-[#27272b] shadow-lg shadow-gray-900'>
+    <header className='border-b border-[#3e3e3e] bg-[#27272b] shadow-lg shadow-zinc-900'>
       <div className='container mx-auto flex flex-wrap justify-between gap-2 py-2'>
         <div id='logo'>
           <Link to='/'>
@@ -78,39 +78,41 @@ const Navbar = () => {
             </NavLink>
           ))}
 
-          {user && (
-            <Link
-              to='/'
-              onClick={handleClick}
-              className='flex items-center gap-1 border-b-2 
-              border-transparent p-0.5 px-3 text-gray-500 transition-colors hover:text-white hover:transition-colors'
-            >
-              Logout
-            </Link>
-          )}
-          {!user && (
-            <>
-              <NavLink
-                to='/login'
-                id='login'
+          <div className='flex grow justify-end'>
+            {user && (
+              <Link
+                to='/'
+                onClick={handleClick}
                 className='flex items-center gap-1 border-b-2 
               border-transparent p-0.5 px-3 text-gray-500 transition-colors hover:text-white hover:transition-colors'
               >
-                Login
-              </NavLink>
-              <NavLink
-                to='/signup'
-                id='signup'
-                className='flex items-center gap-1 border-b-2 
+                Logout
+              </Link>
+            )}
+            {!user && (
+              <>
+                <NavLink
+                  to='/login'
+                  id='login'
+                  className='flex items-center gap-1 border-b-2 
               border-transparent p-0.5 px-3 text-gray-500 transition-colors hover:text-white hover:transition-colors'
-              >
-                Sign Up
-              </NavLink>
-            </>
-          )}
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to='/signup'
+                  id='signup'
+                  className='flex items-center gap-1 border-b-2 
+              border-transparent p-0.5 px-3 text-gray-500 transition-colors hover:text-white hover:transition-colors'
+                >
+                  Sign Up
+                </NavLink>
+              </>
+            )}
+          </div>
         </nav>
 
-        <SearchAssets />
+        {/* <SearchAssets /> */}
       </div>
     </header>
   )

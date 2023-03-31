@@ -495,32 +495,32 @@ select {
   color: gray;
 } */
 
-.feed-title a span {
+/* .feed-title a span {
   color: lightgray;
 }
 
 .feed-title a span:hover {
   color: darkgray;
-}
+} */
 
-.feed-row:hover {
+/* .feed-row:hover {
   background: rgba(65, 68, 79, 0.2);
-}
+} */
 
-#home-loggedin {
+/* #home-loggedin {
   display: grid;
   grid-gap: 1em;
   grid-template-columns: 3fr 1fr;
-}
+} */
 
 /* #home-loggedin .feed-list {
   overflow-y: auto;
   height: 500px;
 } */
 
-#home-loggedin .feed-row {
+/* #home-loggedin .feed-row {
   flex-wrap: wrap;
-}
+} */
 
 #news {
   display: grid;
@@ -617,14 +617,14 @@ button.ascending::before {
   background-color: #1d1d20;
   color: darkgray;
   border-radius: 5px;
-  padding: 0.75em 1.25em;
+  padding: 0.25em 0.75em;
   margin: 0.25em 0.25em 0.25em 0;
   transition: 0.1s ease;
 }
 
-.feed-options button {
+/* .feed-options button {
   flex: 1;
-}
+} */
 
 form input {
   background-color: #232326;
@@ -650,7 +650,7 @@ form input:focus {
   display: inline-block;
 }
 
-button:hover, #news button:hover, #news button.active, .btn-link:hover {
+button:hover, #news button:hover, button.active, .btn-link:hover {
   color: var(--main-color);
   border-color: #058605;
   background-color: #164016;
@@ -667,11 +667,6 @@ button:disabled, button[disabled] {
   background-color: #27272b;
   color: gray;
   border-color: #3e3e3e;
-}
-
-.sticky {
-  position: sticky;
-  top: 0;
 }
 
 .error {
