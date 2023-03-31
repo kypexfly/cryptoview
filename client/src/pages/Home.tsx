@@ -2,8 +2,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, CryptoPriceFeed, Heading, NewsFeed } from '../components'
+import { Container, PriceFeed, Heading, NewsFeed } from '../components'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { objectKeysToString } from '../utils/objectKeysToString'
 
 const LoggedOutPannel = () => {
   return (
@@ -28,10 +29,17 @@ const LoggedOutPannel = () => {
 }
 
 const LoggedInPannel = () => {
-  const fetchNews = (page = 1) => fetch('/api/news?page=' + page).then((res) => res.json())
+  const loadLangs = localStorage.getItem('newsLangs')
+    ? JSON.parse(localStorage.getItem('newsLangs'))
+    : { en: true }
+
+  const regions = objectKeysToString(loadLangs)
+
+  const fetchNews = (page = 1) =>
+    fetch(`/api/news?page=${page}&regions=${regions ?? 'en'}`).then((res) => res.json())
 
   const { data: news, isLoading } = useQuery({
-    queryKey: ['news', 1],
+    queryKey: ['news', 1, regions],
     queryFn: () => fetchNews(1),
   })
 
@@ -40,11 +48,11 @@ const LoggedInPannel = () => {
       <div className='grid gap-5 sm:grid-cols-[3fr_1fr]'>
         <section>
           <Heading as='h2'>My Cryptos</Heading>
-          <CryptoPriceFeed />
+          <PriceFeed />
         </section>
         <section>
           <Heading as='h2'>Latest News</Heading>
-          <NewsFeed news={news} isLoading={isLoading} />
+          <NewsFeed news={news} isLoading={isLoading} limit={8} />
         </section>
       </div>
     </Container>

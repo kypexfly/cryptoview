@@ -22,7 +22,7 @@ type SizeProp =
 export const LoadingSpinner = ({ size }: { size?: SizeProp }) => {
   return (
     <span role='status'>
-      <FontAwesomeIcon icon={faCircleNotch} size={size ?? 'sm'} color='gray' spin />
+      <FontAwesomeIcon icon={faCircleNotch} size={size ?? 'sm'} color='lightgray' spin />
       <span className='sr-only'>Loading...</span>
     </span>
   )

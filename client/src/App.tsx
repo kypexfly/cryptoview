@@ -5,9 +5,9 @@ import { useAuthContext } from './hooks/useAuthContext'
 // pages
 const Home = lazy(() => import('./pages/Home'))
 const Asset = lazy(() => import('./pages/Asset'))
-const Coins = lazy(() => import('./pages/Coins'))
+// const Coins = lazy(() => import('./pages/Coins'))
+import { Coins } from './pages'
 const News = lazy(() => import('./pages/News'))
-const About = lazy(() => import('./pages/About'))
 const Converter = lazy(() => import('./pages/Converter'))
 const SignUp = lazy(() => import('./pages/SignUp'))
 const Login = lazy(() => import('./pages/Login'))
@@ -25,7 +25,6 @@ function App() {
               <Route path='/assets' element={<Coins />} />
               <Route path='/assets/:coinid' element={<Asset />} />
               <Route path='/news' element={<News />} />
-              <Route path='/about' element={<About />} />
               <Route path='/converter' element={<Converter />} />
               <Route path='/signup' element={!user ? <SignUp /> : <Navigate to='/' />} />
               <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />

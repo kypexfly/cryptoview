@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <div className='bg-sp-green'>
       <div className='container mx-auto flex h-full flex-col items-center justify-center px-2 py-6'>
-        <div className='mx-auto w-full max-w-xl rounded-md border border-[#3e3e3e] bg-[#27272b] p-8'>
+        <div className='mx-auto w-full max-w-md rounded-md border border-[#3e3e3e] bg-[#27272b] p-8'>
           <Heading className='text-center'>Sign Up</Heading>
 
           <form className='flex flex-col gap-3' onSubmit={handleSubmit}>

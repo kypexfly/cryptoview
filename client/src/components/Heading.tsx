@@ -6,7 +6,7 @@ interface Props {
 
 const Heading = ({ as: Element = 'h1', children, className }: Props) => {
   return (
-    <Element className={`mb-6 border-b border-[#3e3e3e] pb-3 text-2xl font-bold ${className}`}>
+    <Element className={`mb-8 border-b border-[#3e3e3e] pb-6 text-2xl font-bold ${className}`}>
       {children}
     </Element>
   )

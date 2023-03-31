@@ -40,11 +40,6 @@ const navOptions: NavOptions[] = [
     path: '/converter',
     icon: faArrowRightArrowLeft,
   },
-  {
-    name: 'About',
-    path: '/about',
-    icon: faUsers,
-  },
 ]
 
 const Navbar = () => {

@@ -1,20 +1,24 @@
 import { formatCurrency } from '@coingecko/cryptoformat'
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
+import { SkeletonPriceCard } from './skeleton'
 
-const CryptoPriceFeed = () => {
+const PriceFeed = () => {
   const { data, isLoading } = useQuery(['priceFeed'], () =>
     fetch('https://api.coincap.io/v2/assets?limit=50')
       .then((res) => res.json())
       .then((res) => res.data),
   )
 
-  if (isLoading) return null
+  if (isLoading)
+    return (
+      <SkeletonPriceCard size={50} />
+    )
 
   return (
-    <div id='pricefeed'>
+    <div className='grid grid-cols-[repeat(auto-fill,_minmax(180px,1fr))] gap-3'>
       {data.map((asset) => (
-        <Link to={`/assets/${asset.id}`} className='pricebox' data-tip={asset.name} key={asset.id}>
+        <Link to={`/assets/${asset.id}`} className='price-card' key={asset.id}>
           <img
             className='asset-icon'
             loading='lazy'
@@ -38,4 +42,4 @@ const CryptoPriceFeed = () => {
   )
 }
 
-export default CryptoPriceFeed
+export default PriceFeed

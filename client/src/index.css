@@ -10,6 +10,9 @@
   @apply bg-slate-600 text-white rounded-md
 } */
 
+.price-card {
+  @apply inline-flex items-center rounded border border-[#3e3e3e] bg-[#27272b] p-2 text-white transition-colors hover:text-white
+}
 
 :root {
   --main-color: lime;
@@ -80,11 +83,11 @@ code {
     monospace;
 }
 
-#pricefeed {
+/* #pricefeed {
   display: grid;
   gap: 1em;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-}
+} */
 
 .price-data {
   display: flex;
@@ -92,7 +95,7 @@ code {
   flex: 1;
 }
 
-.pricebox {
+/* .pricebox {
   display: inline-flex;
   align-items: center;
   background-color: #27272b;
@@ -100,7 +103,7 @@ code {
   padding: 0.45em;
   color: #ffffffde;
   border-radius: 5px;
-}
+} */
 
 .price-title {
   display: flex;

@@ -12,7 +12,7 @@ interface NewsFeedProps {
 const NewsFeed = ({ news, isLoading, limit = 20 }: NewsFeedProps) => {
   if (isLoading)
     return (
-      <div className='relative h-[100vh]'>
+      <div className='relative'>
         <LoadingPage />
       </div>
     )
@@ -34,7 +34,7 @@ const NewsList = ({ singleNews }) => {
 
   return (
     <div
-      className={`flex flex-col border-b border-l-2 border-b-[#3e3e3e] border-l-transparent p-3 last:border-none sm:flex-row ${
+      className={`flex flex-col border-b border-l-2 border-b-[#3e3e3e] hover:bg-zinc-900 transition-colors border-l-transparent p-3 last:border-none sm:flex-row ${
         isNew && 'border-l-orange-300'
       }`}
     >
