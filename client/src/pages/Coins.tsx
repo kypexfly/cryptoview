@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { formatCurrency } from '@coingecko/cryptoformat'
 const formatCompact = Intl.NumberFormat('en', { notation: 'compact' })
 import type { GridColDef } from '@mui/x-data-grid'
-import { Container, Heading } from '../components'
+import { Container, Heading, LoadingPage } from '../components'
 
 const columns: GridColDef[] = [
   {
@@ -85,7 +85,12 @@ const TopAssetsTable = () => {
       .then((res) => res.data),
   )
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading)
+    return (
+      <div className='relative h-screen'>
+        <LoadingPage />
+      </div>
+    )
 
   return (
     <DataGrid
@@ -150,9 +155,7 @@ const CoinList = () => {
 
   return (
     <Container>
-      <Heading>
-        Crypto Market Capitalization
-      </Heading>
+      <Heading>Crypto Market Capitalization</Heading>
       <TopAssetsTable />
     </Container>
   )

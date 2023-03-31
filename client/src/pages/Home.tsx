@@ -14,12 +14,12 @@ const LoggedOutPannel = () => {
         <p className='py-6'>Sign up to access some interesting features and more!</p>
 
         <div className='flex flex-wrap justify-center gap-3 py-3'>
-          <Link to='/signup' className='btn-link'>
-            Sign Up
-          </Link>
-
           <Link to='/login' className='btn-link'>
             Log in
+          </Link>
+
+          <Link to='/signup' className='btn-link'>
+            Sign Up
           </Link>
         </div>
       </div>
@@ -38,16 +38,14 @@ const LoggedInPannel = () => {
   return (
     <Container>
       <div className='grid grid-cols-[3fr_1fr] gap-5'>
-        <div>
-          <div>
-            <Heading as='h2'>My Cryptos</Heading>
-            <CryptoPriceFeed />
-          </div>
-        </div>
-        <div>
+        <section>
+          <Heading as='h2'>My Cryptos</Heading>
+          <CryptoPriceFeed />
+        </section>
+        <section>
           <Heading as='h2'>Latest News</Heading>
-          <NewsFeed news={news} isLoading={isLoading} />
-        </div>
+          <NewsFeed news={news} isLoading={isLoading}  />
+        </section>
       </div>
     </Container>
   )

@@ -1,6 +1,10 @@
 import { useParams } from 'react-router-dom'
-import Plot from 'react-plotly.js'
 import { useState, useEffect } from 'react'
+
+import Plotly from 'plotly.js-basic-dist-min'
+import createPlotlyComponent from 'react-plotly.js/factory'
+import { LoadingSpinner } from './loading'
+const Plot = createPlotlyComponent(Plotly)
 
 const Chart = () => {
   const { coinid } = useParams()
@@ -21,14 +25,17 @@ const Chart = () => {
   }, [coinid])
 
   const priceUsd = dataPlot.map((timestep) => timestep.priceUsd)
-  const date = dataPlot.map((timestep) => timestep.date)
+  const date = dataPlot.map((timestep) => new Date(timestep.date))
 
   return (
-    <div className="dash-chart-container">
+    <div className='dash-chart-container'>
       <h4>Chart from last 24h (UTC time)</h4>
-      {!dataPlot.length
-        ? (<div className="loading"><i className="fas fa-spinner fa-pulse"></i></div>)
-        : (<Plot
+      {!dataPlot.length ? (
+        <div className='loading'>
+          <LoadingSpinner />
+        </div>
+      ) : (
+        <Plot
           data={[
             {
               x: date,
@@ -39,17 +46,15 @@ const Chart = () => {
               hoverlabel: {
                 // bgcolor: "rgba(0,0,0,.8)",
                 bordercolor: 'rgba(0,0,0,0)',
-                font: { color: '#FFF', size: 15 }
+                font: { color: '#FFF', size: 15 },
               },
               marker: { color: 'slateblue' },
-              hovertemplate: '<b>%{y}</b> <br>' +
-                '<span>%{x}<extra></extra>'
-            }
+              hovertemplate: '<b>%{y}</b> <br>' + '<span>%{x}<extra></extra>',
+            },
           ]}
           layout={{
             autosize: true,
             margin: { t: 15, b: 40, l: 80, r: 30 },
-            color: 'rgba(0,0,0,0)',
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
             font: { color: 'darkgray' },
@@ -58,7 +63,7 @@ const Chart = () => {
               showgrid: false,
               gridcolor: 'slateblue',
               zeroline: false,
-              showline: false
+              showline: false,
             },
             yaxis: {
               showgrid: true,
@@ -68,17 +73,17 @@ const Chart = () => {
               zeroline: false,
               showline: false,
               autotick: true,
-              range: [Math.min(...priceUsd) * 0.99, Math.max(...priceUsd)]
-            }
+              range: [Math.min(...priceUsd) * 0.99, Math.max(...priceUsd)],
+            },
           }}
           useResizeHandler={true}
           style={{ width: '100%', height: '325px' }}
           config={{
             responsive: true,
-            displaylogo: false
+            displaylogo: false,
           }}
-        />)
-      }
+        />
+      )}
     </div>
   )
 }
