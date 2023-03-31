@@ -50,6 +50,4 @@ Live demo: Not available until migration to serverless.
 
 ## 💻 Analyze bundle size
 
-* Run `npm build` & `npx webpack-bundle-analyzer ./build/bundle-stats.json`
-OR
-* Run `npm run analyze`
+* Run `npx vite-bundle-visualizer`, then open `stats.html` in browser.
