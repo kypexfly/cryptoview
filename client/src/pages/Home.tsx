@@ -2,7 +2,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, PriceFeed, Heading, NewsFeed } from '../components'
+import { Container, PriceFeed, Heading, NewsFeed, SearchAssets } from '../components'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { objectKeysToString } from '../utils/objectKeysToString'
 
@@ -48,6 +48,7 @@ const LoggedInPannel = () => {
       <div className='grid gap-5 sm:grid-cols-[3fr_1fr]'>
         <section>
           <Heading as='h2'>My Cryptos</Heading>
+          <SearchAssets />
           <PriceFeed />
         </section>
         <section>

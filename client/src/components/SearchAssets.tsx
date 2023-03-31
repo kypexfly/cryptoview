@@ -56,7 +56,7 @@ const SearchAssets = () => {
   }
 
   return (
-    <div id='search-box'>
+    <div id='search-box' className='mb-6 flex justify-center'>
       <Turnstone
         debounceWait={250}
         id='searchbar'
