@@ -5,7 +5,5 @@
       "isolatedModules": true,
       "noEmit": true,
       "strict": false,
-      "rootDir": "./",
-      "outDir": "./dist",
     },
 }

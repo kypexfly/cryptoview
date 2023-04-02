@@ -1,0 +1,2 @@
+[functions]
+    external_node_modules = ["express", "mongodb", "mongoose", "axios", "validator", "bcrypt", "jsonwebtoken", "serverless-http"]
