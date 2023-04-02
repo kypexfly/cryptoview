@@ -17,18 +17,19 @@ const Asset = () => {
   }, [coinid])
 
   // Initial data
+  
   const {
     data: asset,
     isLoading: loadingAsset,
     isError,
   } = useQuery({
     queryKey: ['assets', coinid],
-    queryFn: () => fetch('/api/assets/' + coinid).then((res) => res.json().then((res) => res.data)),
+    queryFn: () => fetch(`/.netlify/functions/api/assets/${coinid}`).then((res) => res.json().then((res) => res.data)),
   })
 
   // Search news from asset
   const fetchNewsFromSymbol = (page = 1, symbol) =>
-    fetch(`/api/news?page=${page}?currencies=${symbol}`).then((res) => res.json())
+    fetch(`/.netlify/functions/api/news?page=${page}?currencies=${symbol}`).then((res) => res.json())
 
   const { data: news, isLoading: loadingNews } = useQuery({
     queryKey: ['news', asset?.symbol],

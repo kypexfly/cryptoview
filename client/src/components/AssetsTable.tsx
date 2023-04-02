@@ -79,7 +79,7 @@ const columns: GridColDef[] = [
 
 const AssetsTable = () => {
   const { data: assets, isLoading } = useQuery(['topAssets'], () =>
-    fetch('/api/assets')
+    fetch('/.netlify/functions/api/assets')
       .then((res) => res.json())
       .then((res) => res.data),
   )

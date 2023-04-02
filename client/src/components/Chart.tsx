@@ -11,7 +11,7 @@ const Chart = () => {
   const [dataPlot, setDataPlot] = useState([])
 
   const fetchAssetHistoryPrice = async () => {
-    const response = await fetch(`/api/assets/${coinid}/history`)
+    const response = await fetch(`/.netlify/functions/api/assets/${coinid}/history`)
     const json = await response.json()
     if (response.ok) {
       setDataPlot(json.data)

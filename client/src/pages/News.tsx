@@ -11,7 +11,7 @@ const News = () => {
   const { page, regions, langs, handleLangSelect, handleSaveLang, setPage } = useNews()
 
   const fetchNews = (page = 1) =>
-    fetch(`/api/news?page=${page}&regions=${regions ?? 'en'}`).then((res) => res.json())
+    fetch(`/.netlify/functions/api/news?page=${page}&regions=${regions ?? 'en'}`).then((res) => res.json())
 
   const {
     data: news,
