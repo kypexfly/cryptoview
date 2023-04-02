@@ -1,10 +1,21 @@
-import mongoose from 'mongoose'
+import mongoose, { Model } from 'mongoose'
 import bcrypt from 'bcrypt'
 import validator from 'validator'
 
 const Schema = mongoose.Schema
 
-const userSchema = new Schema({
+interface IUser {
+  email: string;
+  password: string;
+  _id?: string
+}
+
+interface UserModel extends Model<IUser> {
+  login(email :string , password:string ): IUser;
+  signup(email :string , password:string): IUser;
+}
+
+const userSchema = new Schema<IUser, UserModel>({
   email: {
     type: String,
     required: true,
@@ -62,6 +73,6 @@ userSchema.statics.login = async function (email, password) {
   return user
 }
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model<IUser, UserModel>('User', userSchema)
 
 export { User } 

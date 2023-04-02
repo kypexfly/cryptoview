@@ -1,8 +1,11 @@
 {
     "compilerOptions": {
+      "module": "CommonJS",
       "esModuleInterop": true,
       "isolatedModules": true,
       "noEmit": true,
       "strict": false,
+      "rootDir": "./",
+      "outDir": "./dist",
     },
 }
