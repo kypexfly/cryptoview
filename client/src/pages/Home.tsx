@@ -67,8 +67,6 @@ const Home = () => {
     document.title = 'CryptoView'
   }, [])
 
-  if (user === null) return null
-
   return (
     <>
       {!user && <LoggedOutPannel />}
