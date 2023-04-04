@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Container, Heading, NewsFeed } from '../components'
 import { useNews } from '../hooks/useNews'
+import clsx from 'clsx'
 
 const News = () => {
   useEffect(() => {
@@ -25,7 +26,7 @@ const News = () => {
   })
 
   return (
-    <Container>
+    <Container className='min-h-[100vh]'>
       <div className='container'>
         <Heading>Crypto News</Heading>
 
@@ -37,7 +38,7 @@ const News = () => {
                 <span className='flex justify-between gap-1'>
                   {Object.keys(langs).map((lang) => (
                     <button
-                      className={`${langs[lang] && 'active'} flex-1`}
+                      className={clsx('flex-1', langs[lang] && 'active')}
                       onClick={handleLangSelect}
                       key={lang}
                       value={lang}

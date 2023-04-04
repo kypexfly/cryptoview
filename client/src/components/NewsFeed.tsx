@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { formatDistance } from 'date-fns'
 import { LoadingPage } from './loading'
+import clsx from 'clsx'
 
 interface NewsFeedProps {
   news: unknown
@@ -30,15 +31,19 @@ const NewsList = ({ singleNews }) => {
   const { published_at, url, title, kind, domain, currencies } = singleNews
   const time_ago = formatDistance(new Date(published_at), new Date(), { addSuffix: false })
   const get_minutes_ago = time_ago.match('([0-9]*) minutes$')
-  const isNew = (get_minutes_ago ? Number(get_minutes_ago[1]) : undefined) < 10
+  const isNew = (get_minutes_ago ? Number(get_minutes_ago[1]) : undefined) < 15
 
   return (
     <div
-      className={`flex flex-col border-b border-l-2 border-b-[#3e3e3e] hover:bg-zinc-900 transition-colors border-l-transparent p-3 last:border-none sm:flex-row ${
-        isNew && 'border-l-orange-300'
-      }`}
+      className={clsx(
+        'flex flex-col border-b border-l-4 border-b-[#3e3e3e] p-3 transition-colors last:border-none hover:bg-zinc-900 sm:flex-row',
+        {
+          'border-l-orange-400': isNew,
+          'border-l-transparent': !isNew,
+        },
+      )}
     >
-      <div className='sm:basis-24 sm:self-center pr-3 text-xs text-gray-500'>{time_ago}</div>
+      <div className='pr-3 text-xs text-gray-500 sm:basis-24 sm:self-center'>{time_ago}</div>
 
       <div className='flex-1'>
         <a href={url} target='_blank' rel='noopener noreferrer'>
@@ -50,7 +55,9 @@ const NewsList = ({ singleNews }) => {
         </a>
 
         <div className='inline-flex w-full flex-wrap items-center'>
-          <span className={`mr-1 rounded text-xs font-bold ${kind === 'media' && 'price-green'}`}>
+          <span
+            className={clsx('mr-1 rounded text-xs font-bold', { 'price-green': kind === 'media' })}
+          >
             ({kind})
           </span>
           {currencies &&

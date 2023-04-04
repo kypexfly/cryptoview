@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { faCircleNotch, faAsterisk } from '@fortawesome/free-solid-svg-icons'
 
 type SizeProp =
   | '2xs'
@@ -22,7 +22,7 @@ type SizeProp =
 export const LoadingSpinner = ({ size }: { size?: SizeProp }) => {
   return (
     <span role='status'>
-      <FontAwesomeIcon icon={faCircleNotch} size={size ?? 'sm'} color='lightgray' spin />
+      <FontAwesomeIcon icon={faAsterisk} size={size ?? 'sm'} color='lime' spin />
       <span className='sr-only'>Loading...</span>
     </span>
   )
@@ -30,6 +30,6 @@ export const LoadingSpinner = ({ size }: { size?: SizeProp }) => {
 
 export const LoadingPage = () => (
   <div className='absolute flex h-full w-full items-center justify-center'>
-    <LoadingSpinner size='xl' />
+    <LoadingSpinner size='2xl' />
   </div>
 )

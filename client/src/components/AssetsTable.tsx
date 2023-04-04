@@ -142,7 +142,7 @@ const AssetsTable = () => {
         pagination: { paginationModel: { pageSize: 25 } },
       }}
       autoHeight
-      rowHeight={50}
+      rowHeight={60}
       disableRowSelectionOnClick
       disableColumnSelector
       disableColumnMenu
