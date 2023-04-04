@@ -1,16 +1,11 @@
 import axios from 'axios'
-import express from 'express'
+import express, { Request, Response } from 'express'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  const options = {
-    method: 'GET',
-    url: 'https://api.coincap.io/v2/assets',
-  }
-
+router.get('/', (req: Request, res: Response) => {
   axios
-    .request(options)
+    .get('https://api.coincap.io/v2/assets')
     .then(function (response) {
       res.status(200).json(response.data)
     })
@@ -19,16 +14,13 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/get', (req, res) => {
-  const options = {
-    method: 'GET',
-    url: `https://api.coincap.io/v2/assets?search=${req.query.search || ''}&limit=${
-      req.query.limit || ''
-    }`,
-  }
+router.get('/get', (req: Request, res: Response) => {
+  const url = `https://api.coincap.io/v2/assets?search=${req.query.search || ''}&limit=${
+    req.query.limit || ''
+  }`
 
   axios
-    .request(options)
+    .get(url)
     .then(function (response) {
       res.status(200).json(response.data)
     })
@@ -37,14 +29,11 @@ router.get('/get', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
-  const options = {
-    method: 'GET',
-    url: `https://api.coincap.io/v2/assets/${req.params.id}`,
-  }
+router.get('/:id', (req: Request, res: Response) => {
+  const url = `https://api.coincap.io/v2/assets/${req.params.id}`
 
   axios
-    .request(options)
+    .get(url)
     .then(function (response) {
       res.status(200).json(response.data)
     })
@@ -53,16 +42,13 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.get('/rates/:asset', (req, res) => {
-  const options = {
-    method: 'GET',
-    url: `https://api.coincap.io/v2/rates/${req.params.asset}`,
-  }
+router.get('/rates/:asset', (req: Request, res: Response) => {
+  const url = `https://api.coincap.io/v2/rates/${req.params.asset}`
 
   // console.log('✨ PriceUSD for converter: ', options.url)
 
   axios
-    .request(options)
+    .get(url)
     .then(function (response) {
       res.status(200).json(response.data)
     })
@@ -71,21 +57,18 @@ router.get('/rates/:asset', (req, res) => {
     })
 })
 
-router.get('/:asset/history', (req, res) => {
+router.get('/:asset/history', (req: Request, res: Response) => {
   const t7dago = {
     start: new Date(new Date().getTime() - 1 * (24 * 60 * 60 * 1000)).valueOf(),
     end: new Date().getTime().valueOf(),
   }
 
-  const options = {
-    method: 'GET',
-    url: `https://api.coincap.io/v2/assets/${req.params.asset}/history?interval=m5&start=${t7dago.start}&end=${t7dago.end}`,
-  }
+  const url = `https://api.coincap.io/v2/assets/${req.params.asset}/history?interval=m5&start=${t7dago.start}&end=${t7dago.end}`
 
-  console.log(options.url)
+  // console.log(url)
 
   axios
-    .request(options)
+    .get(url)
     .then(function (response) {
       res.status(200).json(response.data)
     })

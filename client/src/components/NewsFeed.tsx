@@ -36,7 +36,7 @@ const NewsList = ({ singleNews }) => {
   return (
     <div
       className={clsx(
-        'flex flex-col border-b border-l-4 border-b-[#3e3e3e] p-3 transition-colors last:border-none hover:bg-zinc-900 sm:flex-row',
+        'flex flex-col border-b border-l-2 border-b-[#3e3e3e] p-3 transition-colors last:border-none hover:bg-zinc-900 sm:flex-row',
         {
           'border-l-orange-400': isNew,
           'border-l-transparent': !isNew,

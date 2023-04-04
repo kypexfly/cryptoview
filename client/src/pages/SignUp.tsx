@@ -54,7 +54,7 @@ const Login = () => {
               <button disabled={isLoading} className='btn-link'>
                 Sign up
               </button>
-              {error && <div className='error'>{error}</div>}
+              {error && <div className='error py-3'>{error}</div>}
             </div>
           </form>
 
