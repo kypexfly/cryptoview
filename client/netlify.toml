@@ -1,3 +1,5 @@
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["express", "mongodb"]
+
+[functions.user]
+  external_node_modules = ["bcrypt"]
