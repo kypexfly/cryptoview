@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { connectToDatabase } from '../helpers/connectToDatabase'
 import { Request, Response } from 'express'
 import { z } from 'zod'
