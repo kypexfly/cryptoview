@@ -79,7 +79,7 @@ const columns: GridColDef[] = [
 
 const AssetsTable = () => {
   const { data: assets, isLoading } = useQuery(['topAssets'], () =>
-    fetch('/api/assets')
+    fetch('/.netlify/functions/api/assets')
       .then((res) => res.json())
       .then((res) => res.data),
   )
@@ -142,7 +142,7 @@ const AssetsTable = () => {
         pagination: { paginationModel: { pageSize: 25 } },
       }}
       autoHeight
-      rowHeight={50}
+      rowHeight={60}
       disableRowSelectionOnClick
       disableColumnSelector
       disableColumnMenu

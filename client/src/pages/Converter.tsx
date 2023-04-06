@@ -15,12 +15,12 @@ const Converter = () => {
 
     setRightPrice({})
 
-    fetch(`/api/assets/rates/${first}`)
+    fetch(`/.netlify/functions/api/assets/rates/${first}`)
       .then((res) => res.json())
       .then((json) => setLeftPrice(json.data))
       .catch((err) => console.log(err))
 
-    fetch(`/api/assets/rates/${second}`)
+    fetch(`/.netlify/functions/api/assets/rates/${second}`)
       .then((res) => res.json())
       .then((json) => setRightPrice(json.data))
       .catch((err) => console.log(err))

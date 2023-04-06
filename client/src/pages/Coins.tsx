@@ -8,7 +8,7 @@ const CoinList = () => {
   }, [])
 
   return (
-    <Container>
+    <Container className='min-h-[100vh]'>
       <Heading>Crypto Market Capitalization</Heading>
       <Suspense>
         <AssetsTable />

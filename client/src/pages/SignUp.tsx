@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Heading } from '../components'
 import { useSignup } from '../hooks/useSignup'
+import Button  from '@mui/material/Button'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faKey, faUser } from '@fortawesome/free-solid-svg-icons'
@@ -53,7 +54,7 @@ const Login = () => {
               <button disabled={isLoading} className='btn-link'>
                 Sign up
               </button>
-              {error && <div className='error'>{error}</div>}
+              {error && <div className='error py-3'>{error}</div>}
             </div>
           </form>
 

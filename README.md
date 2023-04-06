@@ -44,6 +44,7 @@ Live demo: Not available until migration to serverless.
 ## 🧪 Possible improvements / To Do
 
 * Migrate to serverless backend (Netlify/Vercel functions)
+* Add Typescript types to components
 * Add features for signed in users
     * Favorite cryptocurrencies (?)
     * etc...
